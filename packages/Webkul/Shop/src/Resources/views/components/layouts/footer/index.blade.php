@@ -25,7 +25,7 @@
     <div class="flex justify-between gap-x-6 gap-y-8 p-[60px] max-1060:flex-col-reverse max-md:gap-5 max-md:p-8 max-sm:px-4 max-sm:py-5">
         <!-- For Desktop View -->
         <div
-            class="flex flex-wrap items-start gap-24 max-1180:gap-6 max-1060:hidden"
+            class="flex flex-wrap items-start gap-24 max-1180:gap-6"
             v-pre
         >
             @if ($customization?->options)
@@ -50,7 +50,7 @@
         </div>
 
         <!-- For Mobile view -->
-        <x-shop::accordion
+        {{-- <x-shop::accordion
             :is-active="false"
             class="hidden !w-full rounded-xl !border-2 !border-[#e9decc] max-1060:block max-sm:rounded-lg"
         >
@@ -85,7 +85,7 @@
                     @endforeach
                 @endif
             </x-slot>
-        </x-shop::accordion>
+        </x-shop::accordion> --}}
 
         {!! view_render_event('bagisto.shop.layout.footer.newsletter_subscription.before') !!}
 
