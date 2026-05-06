@@ -11666,14 +11666,6 @@
                 "shasum": ""
             },
             "type": "library",
-            "extra": {
-                "laravel": {
-                    "aliases": [],
-                    "providers": [
-                        "Webkul\\Faker\\Providers\\FakerServiceProvider"
-                    ]
-                }
-            },
             "autoload": {
                 "psr-4": {
                     "Webkul\\Faker\\": "src"
