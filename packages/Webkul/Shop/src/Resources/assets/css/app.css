@@ -11,7 +11,7 @@
 }
 
 img.lazy {
-  visibility: hidden;
+    visibility: hidden;
 }
 
 @layer components {
@@ -81,6 +81,10 @@ img.lazy {
 
     .icon-arrow-right:before {
         content: "\e905";
+    }
+
+    .icon-arrow-right-curving-left:before {
+        content: "\21a9";
     }
 
     .icon-arrow-up:before {
@@ -405,22 +409,22 @@ img.lazy {
         @apply text-[12px] text-white font-semibold py-px px-1.5 max-w-max rounded-[35px];
     }
 
-	.label-pending {
-		@apply bg-yellow-500;
-	}
-
-	.label-processing{
-		@apply bg-cyan-600;
+    .label-pending {
+        @apply bg-yellow-500;
     }
 
-	.label-completed,
-    .label-active {
-		@apply bg-green-600;
-	}
+    .label-processing {
+        @apply bg-cyan-600;
+    }
 
-	.label-closed {
-		@apply bg-indigo-600;
-	}
+    .label-completed,
+    .label-active {
+        @apply bg-green-600;
+    }
+
+    .label-closed {
+        @apply bg-indigo-600;
+    }
 
     .label-canceled {
         @apply bg-rose-600;
@@ -431,11 +435,13 @@ img.lazy {
     }
 
     .primary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9];
+        /* @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:opacity-[0.9]; */
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl text-white bg-brand-green border-[0.5px] border-brand-green px-4 py-2 max-w-max cursor-pointer transition-all duration-[250ms] hover:bg-brand-green/90;
     }
 
     .secondary-button {
-        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d];
+        /* @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-navyBlue border border-navyBlue px-8 py-4 max-w-max cursor-pointer transition-all hover:bg-[#050e3a0d]; */
+        @apply flex gap-x-1.5 items-center place-content-center font-medium rounded-xl bg-white text-brand-green border-[0.5px] border-brand-green px-4 py-2 max-w-max cursor-pointer transition-all duration-[250ms] hover:bg-brand-logo-green hover:text-black;
     }
 
     .shimmer {

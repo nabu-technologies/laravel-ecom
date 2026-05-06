@@ -37,7 +37,7 @@
 
             <a
                 href="{{ route('shop.customers.account.rma.index') }}"
-                class="secondary-button flex items-center gap-x-2 border-[#E9E9E9] px-5 max-lg:px-3 max-lg:text-xs py-3 font-normal"
+                class="secondary-button flex items-center gap-x-2 px-5 max-lg:px-3 max-lg:text-xs py-3 font-normal"
             >
                 @lang('shop::app.checkout.onepage.address.back')
             </a>

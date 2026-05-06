@@ -168,7 +168,7 @@
 
                             <a
                                 href="{{ route('shop.customers.register.index') }}"
-                                class="block m-0 mx-auto text-base text-center border-2 secondary-button w-max rounded-2xl px-7 max-md:rounded-lg max-md:py-3 ltr:ml-0 rtl:mr-0"
+                                class="block m-0 mx-auto text-base text-center secondary-button w-max rounded-2xl px-7 max-md:rounded-lg max-md:py-3 ltr:ml-0 rtl:mr-0"
                             >
                                 @lang('shop::app.components.layouts.header.desktop.bottom.sign-up')
                             </a>
@@ -336,7 +336,7 @@
             <div class="flex items-center">
                 <!-- "All" button for opening the category drawer -->
                 <div
-                    class="flex h-[77px] cursor-pointer items-center border-b-4 border-transparent hover:border-b-4 hover:border-navyBlue"
+                    class="flex h-[77px] cursor-pointer items-center border-b-4 border-transparent hover:border-b-4 transition-all duration-100 hover:border-brand-green"
                     @click="toggleCategoryDrawer"
                 >
                     <span class="flex items-center gap-1 px-5 uppercase">
@@ -348,7 +348,7 @@
 
                 <!-- Show only first 4 categories in main navigation -->
                 <div
-                    class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 hover:border-navyBlue"
+                    class="group relative flex h-[77px] items-center border-b-4 border-transparent hover:border-b-4 transition-all duration-100 hover:border-brand-green"
                     v-for="category in categories.slice(0, 4)"
                 >
                     <span>
