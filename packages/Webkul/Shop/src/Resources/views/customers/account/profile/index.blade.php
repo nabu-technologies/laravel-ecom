@@ -35,7 +35,7 @@
 
             <a
                 href="{{ route('shop.customers.account.profile.edit') }}"
-                class="secondary-button border-zinc-200 px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
+                class="secondary-button px-5 py-3 font-normal max-md:rounded-lg max-md:py-2 max-sm:py-1.5 max-sm:text-sm"
             >
                 @lang('shop::app.customers.account.profile.index.edit')
             </a>
@@ -130,13 +130,13 @@
             <x-shop::form action="{{ route('shop.customers.account.profile.destroy') }}">
                 <x-shop::modal>
                     <x-slot:toggle>
-                        <div class="py-3 primary-button rounded-2xl px-11 max-md:hidden max-md:rounded-lg">
+                        <div class="py-3 border border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition-all duration-200 font-medium text-center cursor-pointer rounded-2xl px-11 max-md:rounded-lg">
                             @lang('shop::app.customers.account.profile.index.delete-profile')
                         </div>
 
-                        <div class="rounded-2xl py-3 text-center font-medium text-red-500 max-md:w-full max-md:max-w-full max-md:py-1.5 md:hidden">
+                        {{-- <div class="rounded-2xl py-3 text-center font-medium text-red-500 max-md:w-full max-md:max-w-full max-md:py-1.5 md:hidden">
                             @lang('shop::app.customers.account.profile.index.delete-profile')
-                        </div>
+                        </div> --}}
                     </x-slot>
 
                     <x-slot:header>

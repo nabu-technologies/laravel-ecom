@@ -16,6 +16,35 @@
 
     <!-- Page Content -->
     <div class="container mt-8 px-[60px] max-lg:px-8">
-        {!! $page->html_content !!}
+        <cms-page-content></cms-page-content>
     </div>
+    
+    @pushOnce('scripts')
+        <script
+            type="text/x-template"
+            id="cms-page-content-template"
+        >
+            <div ref="cmsPageContentNoTw"></div>
+        </script>
+    
+        <script type="module">
+            app.component('cms-page-content', {
+                template: '#cms-page-content-template',
+    
+                data() {
+                    return {
+                        html: `{!! $page->html_content !!}`,
+                    }
+                },
+    
+                mounted() {
+                    const shadow = this.$refs.cmsPageContentNoTw.attachShadow({ mode: "open" });
+                    shadow.innerHTML = this.html;
+                },
+            });
+        </script>
+    @endPushOnce
 </x-shop::layouts>
+
+
+
