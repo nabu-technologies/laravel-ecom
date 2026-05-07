@@ -1206,7 +1206,8 @@ return [
                 'sub-total-incl-tax' => 'Subtotal (Incl. Tax)',
                 'tax' => 'Tax',
 
-                'tax-included' => 'Tax already included:', ],
+                'tax-included' => 'Tax already included:',
+            ],
         ],
 
         'coupon' => [
@@ -1243,7 +1244,7 @@ return [
             'name' => 'Name',
             'phone-number' => 'Phone Number',
             'submit' => 'Submit',
-            'title' => 'Contact Us',
+            'title' => 'Contact',
         ],
 
         'index' => [
@@ -1255,7 +1256,8 @@ return [
             'verify-email' => 'Verify your email account',
         ],
 
-        'thanks-for-contact' => 'Thanks for contacting us with your comments and questions. We all respond to you very soon.',
+        // 'thanks-for-contact' => 'Thanks for contacting us with your comments and questions. We all respond to you very soon.',
+        'thanks-for-contact' => 'Thank you for contacting us with your comments and questions. We’ll get back to you soon.',
     ],
 
     'partials' => [
