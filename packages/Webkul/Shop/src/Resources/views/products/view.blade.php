@@ -74,7 +74,7 @@
     <div class="1180:mt-20">
         <div class="max-1180:hidden">
             <x-shop::tabs
-                position="center"
+                {{-- position="center" --}}
                 ref="productTabs"
             >
                 <!-- Description Tab -->
@@ -170,7 +170,7 @@
                 </p>
             </x-slot>
 
-            <x-slot:content class="max-sm:px-0">
+            <x-slot:content class="max-sm:px-0 md:px-4">
                 <div class="mb-5 text-lg text-zinc-500 max-1180:text-sm max-md:mb-1 max-md:px-4">
                     {!! $product->description !!}
                 </div>
