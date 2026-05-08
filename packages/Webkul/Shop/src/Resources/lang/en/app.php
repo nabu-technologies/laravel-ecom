@@ -635,8 +635,9 @@ return [
 
             'cookie' => [
                 'index' => [
+                    'terms-conditions' => 'Terms and Conditions',
                     'privacy-policy' => 'Privacy Policy',
-                    'reject' => 'Reject',
+                    'reject' => '&times;',
                     'accept' => 'Accept',
                     'learn-more-and-customize' => 'Learn More and Customize',
                 ],

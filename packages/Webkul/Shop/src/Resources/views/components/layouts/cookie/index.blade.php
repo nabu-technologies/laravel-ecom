@@ -13,7 +13,7 @@
 
             @if (core()->getConfigData('general.gdpr.cookie.enabled'))
                 <div
-                    class="js-cookie-consent fixed z-[999] mx-4 box-border hidden min-h-5 overflow-hidden rounded bg-black/90 p-7"
+                    class="js-cookie-consent fixed z-[999] mx-4 box-border hidden min-h-5 overflow-hidden rounded-2xl bg-black/90 p-7"
                     :class="getPositionClasses(position)"
                 >
                     <div class="cookieTitle">
@@ -32,38 +32,35 @@
                         >
                             {{ core()->getConfigData('general.gdpr.cookie.description') }}
 
-                            <a
-                                class="text-white underline"
-                                href="{{ url('page/privacy-policy') }}"
-                            >
-                                @lang('shop::app.components.layouts.cookie.index.privacy-policy')
-                            </a>
+                        <a class="text-white underline" href="{{ url('page/terms-conditions') }}">@lang('shop::app.components.layouts.cookie.index.terms-conditions')</a>
+                        &nbsp;
+                        <a class="text-white underline" href="{{ url('page/privacy-policy') }}">@lang('shop::app.components.layouts.cookie.index.privacy-policy')</a>
                         </p>
                     </div>
 
                     <div class="cookieButton">
                         <div class="mt-2.5 flex gap-2">
                             <button
-                                class="box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
+                                class="box-border inline-block w-full max-w-full flex-1 cursor-pointer rounded-xl primary-button px-6 py-4 text-center font-sans text-sm font-bold"
                                 @click="createCookie()"
                             >
                                 @lang('shop::app.components.layouts.cookie.index.accept')
                             </button>
 
                             <button
-                                class="box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
+                                class="box-border inline-block flex-none cursor-pointer rounded-xl border-red-500 border px-6 py-4 text-center font-sans text-sm font-bold text-red-500 transition-colors duration-300 ease-in-out hover:bg-red-500 hover:text-white"
                                 @click="rejectCookie()"
                             >
                                 @lang('shop::app.components.layouts.cookie.index.reject')
                             </button>
                         </div>
 
-                        <a
+                        {{-- <a
                             class="mt-2.5 box-border inline-block w-full cursor-pointer rounded bg-blue-500 px-6 py-4 text-center font-sans text-sm font-bold text-white transition-colors duration-300 ease-in-out hover:bg-blue-400 hover:text-white"
                             href="{{ route('shop.customers.gdpr.cookie-consent') }}"
                         >
                             @lang('shop::app.components.layouts.cookie.index.learn-more-and-customize')
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             @endif
