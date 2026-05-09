@@ -13,7 +13,7 @@
             </x-admin::form.control-group>
 
             <!-- Company Name -->
-            <x-admin::form.control-group>
+            {{-- <x-admin::form.control-group>
                 <x-admin::form.control-group.label>
                     @lang('admin::app.sales.orders.create.cart.address.company-name')
                 </x-admin::form.control-group.label>
@@ -26,10 +26,10 @@
                 />
             </x-admin::form.control-group>
 
-            {!! view_render_event('bagisto.admin.sales.order.create.cart.address.form.company_name.after') !!}
+            {!! view_render_event('bagisto.admin.sales.order.create.cart.address.form.company_name.after') !!} --}}
 
             <!-- VatId Name -->
-            <x-admin::form.control-group>
+            {{-- <x-admin::form.control-group>
                 <x-admin::form.control-group.label>
                     @lang('admin::app.sales.orders.create.cart.address.vat-id')
                 </x-admin::form.control-group.label>
@@ -45,7 +45,7 @@
                 <x-admin::form.control-group.error ::name="controlName + '.vat_id'" />
             </x-admin::form.control-group>
 
-            {!! view_render_event('bagisto.admin.sales.order.create.cart.address.form.vat_id.after') !!}
+            {!! view_render_event('bagisto.admin.sales.order.create.cart.address.form.vat_id.after') !!} --}}
 
             <!-- First Name -->
             <x-admin::form.control-group>
@@ -276,7 +276,7 @@
                     type="text"
                     ::name="controlName + '.phone'"
                     ::value="address.phone"
-                    rules="required|numeric"
+                    rules="required|regex:^(\+91\s?)?[6-9][0-9]{9}$"
                     :label="trans('admin::app.sales.orders.create.cart.address.telephone')"
                     :placeholder="trans('admin::app.sales.orders.create.cart.address.telephone')"
                 />

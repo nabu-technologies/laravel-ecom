@@ -47,7 +47,7 @@
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.before') !!}
 
                     <!--Company Name -->
-                    <x-shop::form.control-group>
+                    {{-- <x-shop::form.control-group>
                         <x-shop::form.control-group.label>
                             @lang('shop::app.customers.account.addresses.create.company-name')
                         </x-shop::form.control-group.label>
@@ -63,7 +63,7 @@
                         <x-shop::form.control-group.error control-name="company_name" />
                     </x-shop::form.control-group>
 
-                    {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.company_name.after') !!}
+                    {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.company_name.after') !!} --}}
 
                     <!-- First Name -->
                     <x-shop::form.control-group>
@@ -126,7 +126,7 @@
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.email.after') !!}
 
                     <!-- Vat Id -->
-                    <x-shop::form.control-group>
+                    {{-- <x-shop::form.control-group>
                         <x-shop::form.control-group.label>
                             @lang('shop::app.customers.account.addresses.create.vat-id')
                         </x-shop::form.control-group.label>
@@ -142,7 +142,7 @@
                         <x-shop::form.control-group.error control-name="vat_id" />
                     </x-shop::form.control-group>
 
-                    {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.vat_id.after') !!}
+                    {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.vat_id.after') !!} --}}
 
                     <!-- Street Address -->
                     <x-shop::form.control-group>
@@ -303,7 +303,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="phone"
-                            rules="required|phone"
+                            rules="required|regex:^(\+91\s?)?[6-9][0-9]{9}$"
                             :value="old('phone')"
                             :label="trans('shop::app.customers.account.addresses.create.phone')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.phone')"

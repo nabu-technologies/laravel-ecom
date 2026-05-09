@@ -185,7 +185,7 @@
                     <x-slot:content class="!p-0">
                         <div class="grid gap-2.5 p-5 pb-0">
                             <p class="text-xl font-dmserif" v-pre>
-                                @lang('shop::app.components.layouts.header.desktop.bottom.welcome')’
+                                @lang('shop::app.components.layouts.header.desktop.bottom.welcome')
                                 {{ auth()->guard('customer')->user()->first_name }}
                             </p>
 

@@ -50,7 +50,7 @@
                             {!! view_render_event('bagisto.admin.customer.addresses.edit.before') !!}
 
                             <!-- Company Name -->
-                            <x-admin::form.control-group class="w-full">
+                            {{-- <x-admin::form.control-group class="w-full">
                                 <x-admin::form.control-group.label>
                                     @lang('admin::app.customers.customers.view.address.edit.company-name')
                                 </x-admin::form.control-group.label>
@@ -76,10 +76,10 @@
                                 />
 
                                 <x-admin::form.control-group.error control-name="company_name" />
-                            </x-admin::form.control-group>
+                            </x-admin::form.control-group> --}}
 
                             <!-- Vat Id -->
-                            <x-admin::form.control-group class="w-full">
+                            {{-- <x-admin::form.control-group class="w-full">
                                 <x-admin::form.control-group.label>
                                     @lang('admin::app.customers.customers.view.address.edit.vat-id')
                                 </x-admin::form.control-group.label>
@@ -93,7 +93,7 @@
                                 />
 
                                 <x-admin::form.control-group.error control-name="vat_id" />
-                            </x-admin::form.control-group>
+                            </x-admin::form.control-group> --}}
 
                             <!-- First Name -->
                             <x-admin::form.control-group class="w-full">
@@ -159,7 +159,7 @@
                                     type="text"
                                     name="phone"
                                     ::value="address.phone"
-                                    rules="required|phone"
+                                    rules="required|regex:^(\+91\s?)?[6-9][0-9]{9}$"
                                     :label="trans('admin::app.customers.customers.view.address.edit.phone')"
                                     :placeholder="trans('admin::app.customers.customers.view.address.edit.phone')"
                                 />

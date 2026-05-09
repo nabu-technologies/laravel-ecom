@@ -59,7 +59,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.before', ['address' => $address]) !!}
 
                 <!-- Company Name -->
-                <x-shop::form.control-group>
+                {{-- <x-shop::form.control-group>
                     <x-shop::form.control-group.label>
                         @lang('shop::app.customers.account.addresses.edit.company-name')
                     </x-shop::form.control-group.label>
@@ -75,7 +75,7 @@
                     <x-shop::form.control-group.error control-name="company_name" />
                 </x-shop::form.control-group>
 
-                {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.company_name.after', ['address' => $address]) !!}
+                {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.company_name.after', ['address' => $address]) !!} --}}
 
                 <!-- First Name -->
                 <x-shop::form.control-group>
@@ -138,7 +138,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.email.after', ['address' => $address]) !!}
 
                 <!-- Vat ID -->
-                <x-shop::form.control-group>
+                {{-- <x-shop::form.control-group>
                     <x-shop::form.control-group.label>
                         @lang('shop::app.customers.account.addresses.edit.vat-id')
                     </x-shop::form.control-group.label>
@@ -154,7 +154,7 @@
                     <x-shop::form.control-group.error control-name="vat_id" />
                 </x-shop::form.control-group>
 
-                {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.vat_id.after', ['address' => $address]) !!}
+                {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.vat_id.after', ['address' => $address]) !!} --}}
 
                 @php
                     $addresses = explode(PHP_EOL, $address->address);
@@ -316,7 +316,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="phone"
-                        rules="required|phone"
+                        rules="required|regex:^(\+91\s?)?[6-9][0-9]{9}$"
                         :value="old('phone') ?? $address->phone"
                         :label="trans('shop::app.customers.account.addresses.edit.phone')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.phone')"
