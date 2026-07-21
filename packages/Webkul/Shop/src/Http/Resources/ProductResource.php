@@ -4,6 +4,7 @@ namespace Webkul\Shop\Http\Resources;
 
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
+use Illuminate\Support\Facades\Log;
 use Webkul\Product\Helpers\Review;
 
 class ProductResource extends JsonResource
@@ -35,6 +36,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'sku' => $this->sku,
             'name' => $this->name,
+            'attribute_family' => $this->attribute_family,
             'description' => $this->description,
             'url_key' => $this->url_key,
             'base_image' => product_image()->getProductBaseImage($this),

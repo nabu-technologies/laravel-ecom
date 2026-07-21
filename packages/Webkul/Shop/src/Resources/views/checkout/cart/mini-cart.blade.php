@@ -1,18 +1,13 @@
 <!-- Mini Cart Vue Component -->
 <v-mini-cart>
-    <span
-        class="icon-cart cursor-pointer text-2xl"
-        role="button"
-        aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
-    ></span>
+    <span class="icon-cart cursor-pointer text-2xl" role="button" aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"></span>
 </v-mini-cart>
 
 @pushOnce('scripts')
     <script
-        type="text/x-template"
-        id="v-mini-cart-template"
-    >
-        {!! view_render_event('bagisto.shop.checkout.mini-cart.drawer.before') !!}
+    type="text/x-template"
+    id="v-mini-cart-template">
+    {!! view_render_event('bagisto.shop.checkout.mini-cart.drawer.before') !!}
 
         @if (core()->getConfigData('sales.checkout.mini_cart.display_mini_cart'))
             <x-shop::drawer>
@@ -21,30 +16,35 @@
                     {!! view_render_event('bagisto.shop.checkout.mini-cart.drawer.toggle.before') !!}
 
                     <span class="relative">
-                        <span
-                            class="icon-cart cursor-pointer text-2xl"
-                            role="button"
-                            aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
-                            tabindex="0"
-                            @click="getCart"
-                        ></span>
+                        <span  @click="getCart" class="cursor-pointer  leading-none text-[#323c42] hover:text-black flex items-center gap-1.5 rounded-lg bg-[#c9f73c] px-3 py-2.5">
+                            <span
+                                class="icon-cart "
+                                role="button"
+                                aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
+                                tabindex="0"
+                               
+                            ></span>
+                            <span class="cursor-pointer text-sm  leading-none text-[#323c42] hover:text-black flex items-center rounded-lg bg-[#c9f73c] font-medium ">Bag</span>
+                        </span>
+                           
 
                         @if (core()->getConfigData('sales.checkout.my_cart.summary') == 'display_item_quantity')
                             <span
-                                class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:ltr:left-4 max-md:rtl:right-4"
+                                class="absolute -top-2 rounded-[44px] bg-gray-700 px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:-right-2 rtl:right-4 max-md:ltr:left-4 max-md:rtl:right-4"
                                 v-if="cart?.items_qty"
                             >
                                 @{{ cart.items_qty }}
                             </span>
                         @else
                             <span
-                                class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
+                                class="absolute -top-2 rounded-[44px] bg-gray-700 px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:-right-2 rtl:right-4 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
                                 v-if="cart?.items_count"
                             >
                                 @{{ cart.items_count }}
                             </span>
                         @endif
                     </span>
+                    <!-- <div>Back to Nabu</div> -->
 
                     {!! view_render_event('bagisto.shop.checkout.mini-cart.drawer.toggle.after') !!}
                 </x-slot>
@@ -352,19 +352,22 @@
             </x-shop::drawer>
 
         @else
-            <a href="{{ route('shop.checkout.onepage.index') }}">
+            <!-- <a href="{{ route('shop.checkout.onepage.index') }}"> -->
+            <a href="{{ route('shop.checkout.cart.index') }}">
                 {!! view_render_event('bagisto.shop.checkout.mini-cart.drawer.toggle.before') !!}
 
-                    <span class="relative">
+                    <span class="relative ">
+                         <span  @click="getCart" class="cursor-pointer  leading-none text-[#323c42] hover:text-black flex items-center gap-1.5 rounded-lg bg-[#c9f73c] px-2.5 py-2">
                         <span
-                            class="icon-cart cursor-pointer text-2xl"
+                            class="icon-cart cursor-pointer text-xl"
                             role="button"
                             aria-label="@lang('shop::app.checkout.cart.mini-cart.shopping-cart')"
                             tabindex="0"
                         ></span>
+                        <span class="cursor-pointer text-sm  leading-none text-[#323c42] hover:text-black flex items-center rounded-lg bg-[#c9f73c] font-medium ">Bag</span></span>
 
                         <span
-                            class="absolute -top-4 rounded-[44px] bg-navyBlue px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:left-5 rtl:right-5 max-md:px-2 max-md:py-1.5 max-md:ltr:left-4 max-md:rtl:right-4"
+                            class="absolute -top-2 rounded-[44px] bg-gray-700 px-2 py-1.5 text-xs font-semibold leading-[9px] text-white ltr:-right-2 rtl:right-4 max-md:ltr:left-4 max-md:rtl:right-4"
                             v-if="cart?.items_qty"
                         >
                             @{{ cart.items_qty }}
@@ -383,12 +386,12 @@
             template: '#v-mini-cart-template',
 
             data() {
-                return  {
+                return {
                     refreshKey: 0,
 
                     cart: null,
 
-                    isLoading:false,
+                    isLoading: false,
 
                     displayTax: {
                         prices: "{{ core()->getConfigData('sales.taxes.shopping_cart.display_prices') }}",
@@ -412,7 +415,7 @@
 
             methods: {
                 getCart() {
-                    this.$axios.get('{{ route('shop.api.checkout.cart.index') }}')
+                    this.$axios.get("{{ route('shop.api.checkout.cart.index') }}")
                         .then(response => {
                             this.cart = response.data.data;
                         })
@@ -426,7 +429,10 @@
 
                     qty[item.id] = quantity;
 
-                    this.$axios.put('{{ route('shop.api.checkout.cart.update') }}', { qty })
+                    this.$axios.put(
+                            "{{ route('shop.api.checkout.cart.update') }}", {
+                                qty
+                            })
                         .then(response => {
                             this.isLoading = false;
 
@@ -473,22 +479,29 @@
                         agree: () => {
                             this.isLoading = true;
 
-                            this.$axios.post('{{ route('shop.api.checkout.cart.destroy') }}', {
-                                '_method': 'DELETE',
-                                'cart_item_id': itemId,
-                            })
-                            .then(response => {
-                                this.cart = response.data.data;
+                            this.$axios.post(
+                                    "{{ route('shop.api.checkout.cart.destroy') }}", {
+                                        '_method': 'DELETE',
+                                        'cart_item_id': itemId,
+                                    })
+                                .then(response => {
+                                    this.cart = response.data.data;
 
-                                this.$emitter.emit('add-flash', { type: 'success', message: response.data.message });
+                                    this.$emitter.emit('add-flash', {
+                                        type: 'success',
+                                        message: response.data.message
+                                    });
 
-                                this.isLoading = false;
-                            })
-                            .catch(error => {
-                                this.$emitter.emit('add-flash', { type: 'error', message: response.data.message });
+                                    this.isLoading = false;
+                                })
+                                .catch(error => {
+                                    this.$emitter.emit('add-flash', {
+                                        type: 'error',
+                                        message: response.data.message
+                                    });
 
-                                this.isLoading = false;
-                            });
+                                    this.isLoading = false;
+                                });
                         }
                     });
                 },

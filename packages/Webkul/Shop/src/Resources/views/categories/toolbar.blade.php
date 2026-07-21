@@ -78,7 +78,7 @@
                     </x-shop::dropdown>
 
                     <!-- Listing Mode Switcher -->
-                    <div class="flex items-center gap-5">
+                    <!-- <div class="flex items-center gap-5">
                         <span
                             class="cursor-pointer text-2xl"
                             role="button"
@@ -98,7 +98,7 @@
                             @click="changeMode('grid')"
                         >
                         </span>
-                    </div>
+                    </div> -->
                 </div>
 
                 {!! view_render_event('bagisto.shop.categories.toolbar.pagination.after') !!}

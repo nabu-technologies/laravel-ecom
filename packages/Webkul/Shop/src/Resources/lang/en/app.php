@@ -920,7 +920,8 @@ return [
                 'title' => 'Contact Us',
             ],
 
-            'add-to-cart' => 'Add To Cart',
+            // 'add-to-cart' => 'Add To Cart',
+            'add-to-cart' => 'Add To Bag',
             'add-to-compare' => 'Product added in compare.',
             'add-to-wishlist' => 'Add To Wishlist',
             'additional-information' => 'Additional Information',
