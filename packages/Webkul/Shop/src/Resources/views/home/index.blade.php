@@ -1,56 +1,56 @@
 @php
-$channel = core()->getCurrentChannel();
+    $channel = core()->getCurrentChannel();
 @endphp
 
 <!-- SEO Meta Content -->
 @push('meta')
-<meta name="title" content="{{ $channel->home_seo['meta_title'] ?? '' }}" />
+    <meta name="title" content="{{ $channel->home_seo['meta_title'] ?? '' }}" />
 
-<meta name="description" content="{{ $channel->home_seo['meta_description'] ?? '' }}" />
+    <meta name="description" content="{{ $channel->home_seo['meta_description'] ?? '' }}" />
 
-<meta name="keywords" content="{{ $channel->home_seo['meta_keywords'] ?? '' }}" />
+    <meta name="keywords" content="{{ $channel->home_seo['meta_keywords'] ?? '' }}" />
 @endPush
 
 @push('styles')
-<style>
-    @keyframes marquee {
-        0% {
-            transform: translateX(0);
+    <style>
+        @keyframes marquee {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
         }
 
-        100% {
-            transform: translateX(-50%);
+        @keyframes marquee-reverse {
+            0% {
+                transform: translateX(-50%);
+            }
+
+            100% {
+                transform: translateX(0);
+            }
         }
-    }
 
-    @keyframes marquee-reverse {
-        0% {
-            transform: translateX(-50%);
+        .animate-marquee {
+            animation: marquee linear infinite;
         }
 
-        100% {
-            transform: translateX(0);
+        .animate-marquee-reverse {
+            animation: marquee-reverse linear infinite;
         }
-    }
-
-    .animate-marquee {
-        animation: marquee linear infinite;
-    }
-
-    .animate-marquee-reverse {
-        animation: marquee-reverse linear infinite;
-    }
-</style>
+    </style>
 @endpush
 
 @push('scripts')
-@if (!empty($categories))
-<script>
-    localStorage.setItem('categories', JSON.stringify(@json($categories)));
-</script>
-@endif
+    @if (!empty($categories))
+        <script>
+            localStorage.setItem('categories', JSON.stringify(@json($categories)));
+        </script>
+    @endif
 
-<script
+    <script
     type="text/x-template"
     id="v-distributions-landing-page-template">
     <div class="min-h-screen flex flex-col">
@@ -224,7 +224,7 @@ $channel = core()->getCurrentChannel();
                             Join thousands of retailers and businesses completing KYC faster and easier.
                         </p>
                       <div
-                            class="flex  xs:flex-row gap-4 justify-center items-center relative z-10 mx-auto w-fit transition-all duration-500 delay-200"
+                            class="flex  xs:flex-row gap-4 justify-center items-center relative z-0 mx-auto w-fit transition-all duration-500 delay-200"
                             :class="heroVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'">
                             @guest('customer')
                             {{-- User NOT logged in --}}
@@ -265,7 +265,7 @@ $channel = core()->getCurrentChannel();
 
 
 
-<script
+    <script
     type="text/x-template"
     id="v-marquee-template">
     <div
@@ -291,7 +291,7 @@ $channel = core()->getCurrentChannel();
 
 
 
-<script
+    <script
     type="text/x-template"
     id="v-animated-button-template">
     <button
@@ -311,319 +311,319 @@ $channel = core()->getCurrentChannel();
         </button>
     </script>
 
-<script type="module">
-    import * as LucideIcons from "https://esm.sh/lucide-vue-next@latest";
+    <script type="module">
+        import * as LucideIcons from "https://esm.sh/lucide-vue-next@latest";
 
 
-    const {
-        ArrowRight,
-        Zap,
-        TrendingUp,
-        Smartphone,
-        Lock,
-        Clock,
-        Wifi,
-        Handshake,
-        Droplets,
-        Flame,
-        ShieldCheck,
-        Tv,
-        IdCard,
-        PhoneCall,
-        Car,
-        CarFront,
-        Fingerprint,
-        BookUser,
-        Landmark,
-        ShieldAlert,
-        Vote
-
-    } = LucideIcons;
-
-    const HEADER_HEIGHT = 64.67;
-
-    const range = (n) => [...Array(n).keys()];
-
-    const shuffle = (a) => {
-        const array = [...a];
-        for (let i = array.length - 1; i > 0; i--) {
-            const j = Math.floor(Math.random() * (i + 1));
-            [array[i], array[j]] = [array[j], array[i]];
-        }
-        return array;
-    };
-
-    const PageComponent = {
-        template: '#v-distributions-landing-page-template',
-        name: "Distributions",
-        delimiters: ["[[", "]]"],
-
-        components: {
-            Marquee: {
-                template: "#v-marquee-template",
-                delimiters: ["[[", "]]"],
-                props: {
-                    items: {
-                        type: Array,
-                        default: () => [], // each item: { label: string, icon: Component }
-                    },
-                    widthPercent: {
-                        type: [Number, String],
-                        default: 100,
-                    },
-                    containerWidth: {
-                        type: Boolean,
-                        default: false,
-                    },
-                    reverse: {
-                        type: Boolean,
-                        default: false,
-                    },
-                },
-                computed: {
-                    loopItems() {
-                        return [...this.items, ...this.items];
-                    }
-                }
-
-            },
-            AnimatedButton: {
-                template: "#v-animated-button-template",
-                delimiters: ["[[", "]]"],
-                props: {
-                    variant: {
-                        type: String,
-                        default: "primary", // "primary" | "secondary" | "noBorder"
-                    },
-                },
-                emits: ["click"],
-                methods: {
-                    handleClick(e) {
-                        this.$emit("click", e);
-                    }
-                }
-            },
+        const {
             ArrowRight,
-        },
+            Zap,
+            TrendingUp,
+            Smartphone,
+            Lock,
+            Clock,
+            Wifi,
+            Handshake,
+            Droplets,
+            Flame,
+            ShieldCheck,
+            Tv,
+            IdCard,
+            PhoneCall,
+            Car,
+            CarFront,
+            Fingerprint,
+            BookUser,
+            Landmark,
+            ShieldAlert,
+            Vote
 
-        data() {
-            return {
-                HEADER_HEIGHT,
+        } = LucideIcons;
 
-                signupUrl: "/customer/register",
-                loginUrl: "/products",
+        const HEADER_HEIGHT = 64.67;
 
-                bgIcons: [ShieldCheck, IdCard, Wifi, Tv, Flame, Droplets, PhoneCall, Zap, Car, CarFront,
-                    Fingerprint,
-                    BookUser, Landmark, ShieldAlert, Vote
-                ],
-                rows: shuffle(range(35)),
+        const range = (n) => [...Array(n).keys()];
 
-                utilities: [{
-                        category: "Contact Data Verification",
-                        icon: IdCard,
-                        description: "Verify customer name, DOB, gender, and address details."
-                    },
-                    {
-                        category: "Financial Verification",
-                        icon: CarFront,
-                        description: "Validate driving license details quickly and accurately."
-                    },
-                    {
-                        category: "Identity Verification",
-                        icon: Fingerprint,
-                        description: "Verify vehicle registration and ownership information."
-                    },
-                    {
-                        category: "Business Verification",
-                        icon: BookUser,
-                        description: "Perform secure Aadhaar-based identity verification."
-                    },
-                    // {
-                    //     category: "Banking Verification",
-                    //     icon: Landmark,
-                    //     description: "Verify UAN and banking-related information securely."
-                    // },
-                    // {
-                    //     category: "Contact Verification",
-                    //     icon: Car,
-                    //     description: "Verify vehicle registration and ownership information."
-                    // },
+        const shuffle = (a) => {
+            const array = [...a];
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        };
 
-                    // {
-                    //     category: "Email Verification",
-                    //     icon: ShieldCheck,
-                    //     description: "Verify email addresses to ensure authenticity and validity."
-                    // },
-                    // {
-                    //     category: "Mobile Verification",
-                    //     icon: Vote,
-                    //     description: "Validate mobile numbers and confirm active user details."
-                    // }
-                ],
+        const PageComponent = {
+            template: '#v-distributions-landing-page-template',
+            name: "Distributions",
+            delimiters: ["[[", "]]"],
 
-                marqueeItems: [{
-                        label: "Aadhar Demographic",
-                        icon: IdCard
+            components: {
+                Marquee: {
+                    template: "#v-marquee-template",
+                    delimiters: ["[[", "]]"],
+                    props: {
+                        items: {
+                            type: Array,
+                            default: () => [], // each item: { label: string, icon: Component }
+                        },
+                        widthPercent: {
+                            type: [Number, String],
+                            default: 100,
+                        },
+                        containerWidth: {
+                            type: Boolean,
+                            default: false,
+                        },
+                        reverse: {
+                            type: Boolean,
+                            default: false,
+                        },
                     },
-                    {
-                        label: "Driving License Verification",
-                        icon: CarFront
-                    },
-                    {
-                        label: "Offline Aadhar KYC",
-                        icon: Fingerprint
-                    },
-                    {
-                        label: "Passport Verification",
-                        icon: BookUser
-                    },
-                    {
-                        label: "RC Verification",
-                        icon: Car
-                    },
-                    {
-                        label: "UAN Verification Plus",
-                        icon: Landmark
-                    },
-                    {
-                        label: "Vehicle Challan Lookup",
-                        icon: ShieldAlert
-                    },
-                    {
-                        label: "Voter ID Verification",
-                        icon: Vote
-                    },
-                ],
-
-                features: [{
-                        icon: Clock,
-                        title: "Verify in Seconds",
-                        description: "Complete KYC instantly with real-time government API response. No more waiting.",
-                        delay: 0,
-                    },
-                    {
-                        icon: Zap,
-                        title: "Instant Onboarding",
-                        description: "Start verifying customers or documents in under a minute with simple integration",
-                        delay: 0.1,
-                    },
-                    {
-                        icon: Smartphone,
-                        title: "Any Device, Anytime",
-                        description: "Access from mobile, tablet, or desktop. Fully responsive and seamless experience.",
-                        delay: 0.2,
-                    },
-                    {
-                        icon: TrendingUp,
-                        title: "Complete Audit Trail",
-                        description: "Full verification history, reports, and compliance records at one place.",
-                        delay: 0.3,
-                    },
-                    {
-                        icon: Lock,
-                        title: "Bank-Grade Security",
-                        description: "End-to-end encryption and secure data handling as per regulatory standards.",
-                        delay: 0.4,
-                    },
-                    {
-                        icon: Handshake,
-                        title: "24/7 Support",
-                        description: "Dedicated support team ready to help you with any verification related queries.",
-                        delay: 0.5,
-                    },
-                ],
-
-                // whileInView replacement state
-                heroVisible: false,
-                utilitiesVisible: false,
-                featuresVisible: false,
-
-                // hold IntersectionObserver instances so we can disconnect them
-                _utilitiesObserver: null,
-                _featuresObserver: null,
-            };
-        },
-
-        computed: {
-            multipliedIcons() {
-                return range(20).flatMap(() => [...this.bgIcons]);
-            },
-        },
-
-        mounted() {
-            // mimics initial -> animate on mount for the hero section
-            requestAnimationFrame(() => {
-                this.heroVisible = true;
-            });
-
-            // utilities section observer
-            this._utilitiesObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        this.utilitiesVisible = true;
-                        this._utilitiesObserver.disconnect();
+                    computed: {
+                        loopItems() {
+                            return [...this.items, ...this.items];
+                        }
                     }
-                }, {
-                    threshold: 0.2
-                }
-            );
-            if (this.$refs.utilitiesSection) {
-                this._utilitiesObserver.observe(this.$refs.utilitiesSection);
-            }
 
-            // features section observer
-            this._featuresObserver = new IntersectionObserver(
-                ([entry]) => {
-                    if (entry.isIntersecting) {
-                        this.featuresVisible = true;
-                        this._featuresObserver.disconnect();
+                },
+                AnimatedButton: {
+                    template: "#v-animated-button-template",
+                    delimiters: ["[[", "]]"],
+                    props: {
+                        variant: {
+                            type: String,
+                            default: "primary", // "primary" | "secondary" | "noBorder"
+                        },
+                    },
+                    emits: ["click"],
+                    methods: {
+                        handleClick(e) {
+                            this.$emit("click", e);
+                        }
                     }
-                }, {
-                    threshold: 0.2
+                },
+                ArrowRight,
+            },
+
+            data() {
+                return {
+                    HEADER_HEIGHT,
+
+                    signupUrl: "/customer/register",
+                    loginUrl: "/products",
+
+                    bgIcons: [ShieldCheck, IdCard, Wifi, Tv, Flame, Droplets, PhoneCall, Zap, Car, CarFront,
+                        Fingerprint,
+                        BookUser, Landmark, ShieldAlert, Vote
+                    ],
+                    rows: shuffle(range(35)),
+
+                    utilities: [{
+                            category: "Contact Data Verification",
+                            icon: IdCard,
+                            description: "Verify customer name, DOB, gender, and address details."
+                        },
+                        {
+                            category: "Financial Verification",
+                            icon: CarFront,
+                            description: "Validate driving license details quickly and accurately."
+                        },
+                        {
+                            category: "Identity Verification",
+                            icon: Fingerprint,
+                            description: "Verify vehicle registration and ownership information."
+                        },
+                        {
+                            category: "Business Verification",
+                            icon: BookUser,
+                            description: "Perform secure Aadhaar-based identity verification."
+                        },
+                        // {
+                        //     category: "Banking Verification",
+                        //     icon: Landmark,
+                        //     description: "Verify UAN and banking-related information securely."
+                        // },
+                        // {
+                        //     category: "Contact Verification",
+                        //     icon: Car,
+                        //     description: "Verify vehicle registration and ownership information."
+                        // },
+
+                        // {
+                        //     category: "Email Verification",
+                        //     icon: ShieldCheck,
+                        //     description: "Verify email addresses to ensure authenticity and validity."
+                        // },
+                        // {
+                        //     category: "Mobile Verification",
+                        //     icon: Vote,
+                        //     description: "Validate mobile numbers and confirm active user details."
+                        // }
+                    ],
+
+                    marqueeItems: [{
+                            label: "Aadhar Demographic",
+                            icon: IdCard
+                        },
+                        {
+                            label: "Driving License Verification",
+                            icon: CarFront
+                        },
+                        {
+                            label: "Offline Aadhar KYC",
+                            icon: Fingerprint
+                        },
+                        {
+                            label: "Passport Verification",
+                            icon: BookUser
+                        },
+                        {
+                            label: "RC Verification",
+                            icon: Car
+                        },
+                        {
+                            label: "UAN Verification Plus",
+                            icon: Landmark
+                        },
+                        {
+                            label: "Vehicle Challan Lookup",
+                            icon: ShieldAlert
+                        },
+                        {
+                            label: "Voter ID Verification",
+                            icon: Vote
+                        },
+                    ],
+
+                    features: [{
+                            icon: Clock,
+                            title: "Verify in Seconds",
+                            description: "Complete KYC instantly with real-time government API response. No more waiting.",
+                            delay: 0,
+                        },
+                        {
+                            icon: Zap,
+                            title: "Instant Onboarding",
+                            description: "Start verifying customers or documents in under a minute with simple integration",
+                            delay: 0.1,
+                        },
+                        {
+                            icon: Smartphone,
+                            title: "Any Device, Anytime",
+                            description: "Access from mobile, tablet, or desktop. Fully responsive and seamless experience.",
+                            delay: 0.2,
+                        },
+                        {
+                            icon: TrendingUp,
+                            title: "Complete Audit Trail",
+                            description: "Full verification history, reports, and compliance records at one place.",
+                            delay: 0.3,
+                        },
+                        {
+                            icon: Lock,
+                            title: "Bank-Grade Security",
+                            description: "End-to-end encryption and secure data handling as per regulatory standards.",
+                            delay: 0.4,
+                        },
+                        {
+                            icon: Handshake,
+                            title: "24/7 Support",
+                            description: "Dedicated support team ready to help you with any verification related queries.",
+                            delay: 0.5,
+                        },
+                    ],
+
+                    // whileInView replacement state
+                    heroVisible: false,
+                    utilitiesVisible: false,
+                    featuresVisible: false,
+
+                    // hold IntersectionObserver instances so we can disconnect them
+                    _utilitiesObserver: null,
+                    _featuresObserver: null,
+                };
+            },
+
+            computed: {
+                multipliedIcons() {
+                    return range(20).flatMap(() => [...this.bgIcons]);
+                },
+            },
+
+            mounted() {
+                // mimics initial -> animate on mount for the hero section
+                requestAnimationFrame(() => {
+                    this.heroVisible = true;
+                });
+
+                // utilities section observer
+                this._utilitiesObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            this.utilitiesVisible = true;
+                            this._utilitiesObserver.disconnect();
+                        }
+                    }, {
+                        threshold: 0.2
+                    }
+                );
+                if (this.$refs.utilitiesSection) {
+                    this._utilitiesObserver.observe(this.$refs.utilitiesSection);
                 }
-            );
-            if (this.$refs.featuresSection) {
-                this._featuresObserver.observe(this.$refs.featuresSection);
-            }
-        },
 
-        beforeUnmount() {
-            // cleanup observers if the component is destroyed before they fire
-            if (this._utilitiesObserver) this._utilitiesObserver.disconnect();
-            if (this._featuresObserver) this._featuresObserver.disconnect();
-        },
-
-        methods: {
-            openSignup() {
-                window.open(this.signupUrl, "_blank", "noopener,noreferrer");
+                // features section observer
+                this._featuresObserver = new IntersectionObserver(
+                    ([entry]) => {
+                        if (entry.isIntersecting) {
+                            this.featuresVisible = true;
+                            this._featuresObserver.disconnect();
+                        }
+                    }, {
+                        threshold: 0.2
+                    }
+                );
+                if (this.$refs.featuresSection) {
+                    this._featuresObserver.observe(this.$refs.featuresSection);
+                }
             },
-            openLogin() {
-                window.open(this.loginUrl, "_blank", "noopener,noreferrer");
+
+            beforeUnmount() {
+                // cleanup observers if the component is destroyed before they fire
+                if (this._utilitiesObserver) this._utilitiesObserver.disconnect();
+                if (this._featuresObserver) this._featuresObserver.disconnect();
             },
-            redirect(url) {
-                window.open(url, "_blank", "noopener,noreferrer");
-            }
-        },
-    };
+
+            methods: {
+                openSignup() {
+                    window.open(this.signupUrl, "_blank", "noopener,noreferrer");
+                },
+                openLogin() {
+                    window.open(this.loginUrl, "_blank", "noopener,noreferrer");
+                },
+                redirect(url) {
+                    window.open(url, "_blank", "noopener,noreferrer");
+                }
+            },
+        };
 
 
-    app.component('v-distributions-page', PageComponent);
-</script>
+        app.component('v-distributions-page', PageComponent);
+    </script>
 @endpush
 
 <x-shop::layouts>
     <!-- Page Title -->
     <x-slot:title>
         {{ $channel->home_seo['meta_title'] ?? '' }}
-        </x-slot>
+    </x-slot>
 
-        {{-- Starting main page --}}
+    {{-- Starting main page --}}
 
-        {{-- End main page --}}
+    {{-- End main page --}}
 
-        <!-- Loop over the theme customization -->
-        {{-- @foreach ($customizations as $customization)
+    <!-- Loop over the theme customization -->
+    {{-- @foreach ($customizations as $customization)
         @php ($data = $customization->options) @endphp
 
         <!-- Static content -->
@@ -673,5 +673,5 @@ $channel = core()->getCurrentChannel();
         @endswitch
         @endforeach --}}
 
-        <v-distributions-page />
+    <v-distributions-page />
 </x-shop::layouts>
