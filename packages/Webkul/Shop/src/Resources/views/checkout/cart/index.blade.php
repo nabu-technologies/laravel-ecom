@@ -14,26 +14,192 @@
     {!! view_render_event('bagisto.shop.checkout.cart.header.before') !!}
 
     <!-- Page Header -->
-    {{-- <div class="flex flex-wrap">
-        <div
-            class="flex w-full justify-between border border-b border-l-0 border-r-0 border-t-0 px-[60px] py-4 max-lg:px-8 max-md:px-4">
-            <div class="flex items-center gap-x-14 max-[1180px]:gap-x-9">
-                {!! view_render_event('bagisto.shop.checkout.cart.logo.before') !!}
+    <div
+        class="flex h-16 w-full justify-between border border-b border-l-0 border-r-0 border-t-0 px-[60px] max-1180:px-8">
+        <!--
+        This section will provide categories for the first, second, and third levels. If
+        additional levels are required, users can customize them according to their needs.
+    -->
+        <!-- Left Nagivation Section -->
+        <div class="flex items-center gap-x-10 max-[1180px]:gap-x-5">
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.before') !!}
 
-                <a href="{{ route('shop.home.index') }}" class="flex min-h-[30px]" aria-label="@lang('shop::app.checkout.cart.index.bagisto')">
-                    <img src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}"
-                        alt="{{ config('app.name') }}" width="131" height="29">
-                </a>
+            <a href="{{ route('shop.home.index') }}" aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.bagisto')">
+                <img src="{{ core()->getCurrentChannel()->logo_url ?? bagisto_asset('images/logo.svg') }}" width="120"
+                    height="32" alt="{{ config('app.name') }}">
+            </a>
 
-                {!! view_render_event('bagisto.shop.checkout.cart.logo.after') !!}
-            </div>
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.logo.after') !!}
 
-            @guest('customer')
-                @include('shop::checkout.login')
-            @endguest
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.category.before') !!}
+
+            <!-- <v-desktop-category>
+                    <div class="flex items-center gap-5">
+                        <span
+                            class="w-20 h-6 rounded shimmer"
+                            role="presentation"></span>
+
+                        <span
+                            class="w-20 h-6 rounded shimmer"
+                            role="presentation"></span>
+
+                        <span
+                            class="w-20 h-6 rounded shimmer"
+                            role="presentation"></span>
+                    </div>
+                </v-desktop-category> -->
+
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.category.after') !!}
         </div>
-    </div> --}}
-    
+
+        <!-- Right Nagivation Section -->
+        <div class="flex items-center gap-x-6  max-[1100px]:gap-x-6 max-lg:gap-x-8">
+
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.search_bar.before') !!}
+
+            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.search_bar.after') !!}
+
+            <!-- Right Navigation Links -->
+            <div class="mt-1.5 gap-x-2 flex items-center max-[1100px]:gap-x-6 max-lg:gap-x-8">
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.compare.before') !!}
+
+                <!-- Compare -->
+                @if (core()->getConfigData('catalog.products.settings.compare_option'))
+                    <a href="{{ route('shop.compare.index') }}" aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.compare')">
+                        <span class="inline-block text-2xl cursor-pointer icon-compare" role="presentation"></span>
+                    </a>
+                @endif
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.compare.after') !!}
+
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile.before') !!}
+
+                <!-- user profile -->
+                <x-shop::dropdown position="bottom-core()->getCurrentLocale()->direction==='ltr'?'right':'left' ">
+                    <x-slot:toggle>
+                        <span class="inline-block text-2xl cursor-pointer icon-users mr-2 mt-1.5" role="button"
+                            aria-label="@lang('shop::app.components.layouts.header.desktop.bottom.profile')" tabindex="0"></span>
+                    </x-slot>
+
+                    <!-- Guest Dropdown -->
+                    @guest('customer')
+                        <x-slot:content>
+                            <div class="grid gap-2.5">
+                                <p class="text-xl font-dmserif">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.welcome-guest')
+                                </p>
+
+                                <p class="text-sm">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.dropdown-text')
+                                </p>
+                            </div>
+
+                            <p class="w-full mt-3 border border-zinc-200"></p>
+
+                            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.customers_action.before') !!}
+
+                            <div class="flex gap-4 mt-6">
+                                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.sign_in_button.before') !!}
+
+                                <a href="{{ route('shop.customer.session.create') }}"
+                                    class="block m-0 mx-auto text-base text-center primary-button w-max rounded-2xl px-7 max-md:rounded-lg ltr:ml-0 rtl:mr-0">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.sign-in')
+                                </a>
+
+                                <a href="{{ route('shop.customers.register.index') }}"
+                                    class="block m-0 mx-auto text-base text-center secondary-button w-max rounded-2xl px-7 max-md:rounded-lg max-md:py-3 ltr:ml-0 rtl:mr-0">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.sign-up')
+                                </a>
+
+                                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.sign_up_button.after') !!}
+                            </div>
+
+                            {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.customers_action.after') !!}
+                        </x-slot>
+                    @endguest
+
+                    <!-- Customers Dropdown -->
+                    @auth('customer')
+                        <x-slot:content class="!p-0">
+                            <div class="grid gap-2.5 p-5 pb-0">
+                                <p class="text-xl font-dmserif" v-pre>
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.welcome')’
+                                    {{ auth()->guard('customer')->user()->first_name }}
+                                </p>
+
+                                <p class="text-sm">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.dropdown-text')
+                                </p>
+                            </div>
+
+                            <p class="w-full mt-3 border border-zinc-200"></p>
+
+                            <div class="mt-2.5 grid gap-1 pb-2.5">
+                                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile_dropdown.links.before') !!}
+
+                                <a class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                    href="{{ route('shop.customers.account.profile.index') }}">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.profile')
+                                </a>
+
+                                <a class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                    href="{{ route('shop.customers.account.orders.index') }}">
+                                    @lang('shop::app.components.layouts.header.desktop.bottom.orders')
+                                </a>
+
+                                @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
+                                    <a class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                        href="{{ route('shop.customers.account.wishlist.index') }}">
+                                        @lang('shop::app.components.layouts.header.desktop.bottom.wishlist')
+                                    </a>
+                                @endif
+
+                                <!--Customers logout-->
+                                @auth('customer')
+                                    <x-shop::form method="DELETE" action="{{ route('shop.customer.session.destroy') }}"
+                                        id="customerLogout" />
+
+                                    <a class="px-5 py-2 text-base cursor-pointer hover:bg-gray-100"
+                                        href="{{ route('shop.customer.session.destroy') }}"
+                                        onclick="event.preventDefault(); document.getElementById('customerLogout').submit();">
+                                        @lang('shop::app.components.layouts.header.desktop.bottom.logout')
+                                    </a>
+                                @endauth
+
+                                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile_dropdown.links.after') !!}
+                            </div>
+                        </x-slot>
+                    @endauth
+                </x-shop::dropdown>
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.mini_cart.before') !!}
+
+                <!-- Mini cart -->
+                @if (core()->getConfigData('sales.checkout.shopping_cart.cart_page'))
+                    @include('shop::checkout.cart.mini-cart')
+                @endif
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.mini_cart.after') !!}
+
+
+                <a href="https://nabu.co.in/"
+                    class="cursor-pointer  leading-none text-muted-foreground  flex items-center gap-1 rounded-lg  px-3 py-2.5 text-sm text-[#323c42]">
+                    <span role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round"
+                            class="lucide lucide-panel-left-close-icon lucide-panel-left-close">
+                            <rect width="18" height="18" x="3" y="3" rx="2" />
+                            <path d="M9 3v18" />
+                            <path d="m16 15-3-3 3-3" />
+                        </svg></span> Back to Nabu</a>
+
+                {!! view_render_event('bagisto.shop.components.layouts.header.desktop.bottom.profile.after') !!}
+            </div>
+        </div>
+    </div>
+
     {!! view_render_event('bagisto.shop.checkout.cart.header.after') !!}
 
     <div class="flex-auto">
@@ -42,9 +208,36 @@
             {!! view_render_event('bagisto.shop.checkout.cart.breadcrumbs.before') !!}
 
             <!-- Breadcrumbs -->
-            @if (core()->getConfigData('general.general.breadcrumbs.shop'))
+            {{-- @if (core()->getConfigData('general.general.breadcrumbs.shop'))
                 <x-shop::breadcrumbs name="cart" />
-            @endif
+                @endif --}}
+            <div class="flex items-center justify-between mb-8 mt-8">
+                <div class="flex items-center space-x-4">
+                    <button
+                        class="inline-flex items-center justify-center gap-2 whitespace-nowrap text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background h-10 px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-brand-logo-green rounded-lg">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                            stroke-linejoin="round" class="lucide lucide-arrow-left w-4 h-4 mr-2" aria-hidden="true">
+                            <path d="m12 19-7-7 7-7"></path>
+                            <path d="M19 12H5"></path>
+                        </svg>Back to Shop</button>
+                    <h1 class="hidden md:block text-3xl font-bold text-neutral-900">Shopping Bag (3 items)</h1>
+                </div>
+
+                <button
+                    class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg]:size-4 [&amp;_svg]:shrink-0 border border-input bg-background h-10 px-4 py-2 text-red-600 hover:text-red-700 hover:bg-red-50"><svg
+                        xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round" class="lucide lucide-trash2 lucide-trash-2 w-4 h-4 mr-2"
+                        aria-hidden="true">
+                        <path d="M10 11v6"></path>
+                        <path d="M14 11v6"></path>
+                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"></path>
+                        <path d="M3 6h18"></path>
+                        <path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                    </svg>Clear Bag</button>
+            </div>
+
 
             {!! view_render_event('bagisto.shop.checkout.cart.breadcrumbs.after') !!}
 
@@ -97,7 +290,7 @@
                             {!! view_render_event('bagisto.shop.checkout.cart.cart_mass_actions.before') !!}
 
                             <!-- Cart Mass Action Container -->
-                            <div class="flex items-center justify-between border-b border-zinc-200 pb-2.5 max-md:py-2.5">
+                            {{-- <div class="flex items-center justify-between border-b border-zinc-200 pb-2.5 max-md:py-2.5">
                                 <div class="flex select-none items-center">
                                     <input
                                         type="checkbox"
@@ -148,7 +341,7 @@
                                         </span>
                                     @endif
                                 </div>
-                            </div>
+                            </div> --}}
 
                             {!! view_render_event('bagisto.shop.checkout.cart.cart_mass_actions.after') !!}
 
@@ -156,12 +349,12 @@
 
                             <!-- Cart Item Listing Container -->
                             <div
-                                class="grid gap-y-6"
+                                class="grid gap-y-10 p-4 rounded-lg border text-card-foreground shadow-sm bg-white border-gray-200"
                                 v-for="item in cart?.items"
                             >
-                                <div class="flex justify-between gap-x-2.5 border-b border-zinc-200 pb-5">
+                                <div class="flex justify-between gap-x-2.5  pb-5">
                                     <div class="flex gap-x-5">
-                                        <div class="mt-11 select-none max-md:mt-9 max-sm:mt-7">
+                                        {{-- <div class="mt-11 select-none max-md:mt-9 max-sm:mt-7">
                                             <input
                                                 type="checkbox"
                                                 :id="'item_' + item.id"
@@ -177,7 +370,7 @@
                                                 aria-label="@lang('shop::app.checkout.cart.index.select-cart-item')"
                                                 aria-labelledby="select-item-label"
                                             ></label>
-                                        </div>
+                                        </div> --}}
 
                                         {!! view_render_event('bagisto.shop.checkout.cart.item_image.before') !!}
 
@@ -377,7 +570,7 @@
                             {!! view_render_event('bagisto.shop.checkout.cart.controls.before') !!}
 
                             <!-- Cart Item Actions -->
-                            <div class="flex flex-wrap justify-end gap-8 max-md:justify-between max-md:gap-5">
+                            {{-- <div class="flex flex-wrap justify-end gap-8 max-md:justify-between max-md:gap-5">
                                 {!! view_render_event('bagisto.shop.checkout.cart.continue_shopping.before') !!}
 
                                 <a
@@ -400,7 +593,7 @@
                                 />
 
                                 {!! view_render_event('bagisto.shop.checkout.cart.update_cart.after') !!}
-                            </div>
+                            </div> --}}
 
                             {!! view_render_event('bagisto.shop.checkout.cart.controls.after') !!}
                         </div>

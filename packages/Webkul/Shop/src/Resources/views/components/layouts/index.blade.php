@@ -95,12 +95,12 @@
     <body>
         {!! view_render_event('bagisto.shop.layout.body.before') !!}
 
-        <a
+        <!-- <a
             href="#main"
             class="skip-to-main-content-link"
         >
             Skip to main content
-        </a>
+        </a> -->
 
         <!-- Built With Bagisto -->
         <div id="app">
