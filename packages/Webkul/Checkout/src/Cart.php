@@ -253,7 +253,9 @@ class Cart
     /**
      * Add items in a cart with some cart and item details.
      */
-    public function addProduct(ProductContract $product, array $data): Contracts\Cart|\Exception
+    // public function addProduct(ProductContract $product, array $data): Contracts\Cart|\Exception
+    // {
+    public function addProduct(ProductContract $product, array $data, bool $preventDuplicate = false): Contracts\Cart|\Exception
     {
         Event::dispatch('checkout.cart.add.before', $product->id);
 
@@ -276,8 +278,19 @@ class Cart
         } else {
             $parentCartItem = null;
 
+            // foreach ($cartProducts as $cartProduct) {
+            //     $cartItem = $this->getItemByProduct($cartProduct, $data);
+
+            //     if (isset($cartProduct['parent_id'])) {
             foreach ($cartProducts as $cartProduct) {
                 $cartItem = $this->getItemByProduct($cartProduct, $data);
+
+                if (
+                    $cartItem
+                    && $preventDuplicate
+                ) {
+                    throw new \Exception('This product is already in your bag.');
+                }
 
                 if (isset($cartProduct['parent_id'])) {
                     $cartProduct['parent_id'] = $parentCartItem->id;
@@ -605,7 +618,7 @@ class Cart
         $cartPayment = new CartPayment;
 
         $cartPayment->method = $params['method'];
-        $cartPayment->method_title = core()->getConfigData('sales.payment_methods.'.$params['method'].'.title');
+        $cartPayment->method_title = core()->getConfigData('sales.payment_methods.' . $params['method'] . '.title');
         $cartPayment->cart_id = $this->cart->id;
         $cartPayment->save();
 

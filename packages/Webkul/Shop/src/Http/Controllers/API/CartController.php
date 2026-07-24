@@ -69,7 +69,8 @@ class CartController extends APIController
                 $response['redirect'] = route('shop.checkout.onepage.index');
             }
 
-            $cart = Cart::addProduct($product, request()->all());
+            // $cart = Cart::addProduct($product, request()->all());
+            $cart = Cart::addProduct($product, request()->all(), true);
 
             return new JsonResource(array_merge([
                 'data' => new CartResource($cart),
