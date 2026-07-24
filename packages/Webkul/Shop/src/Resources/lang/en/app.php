@@ -1116,7 +1116,7 @@ return [
             ],
 
             'summary' => [
-                'cart-summary' => 'Cart Summary',
+                'cart-summary' => 'Order Summary',
                 'delivery-charges' => 'Delivery Charges',
                 'delivery-charges-excl-tax' => 'Delivery Charges (Excl. Tax)',
                 'delivery-charges-incl-tax' => 'Delivery Charges (Incl. Tax)',

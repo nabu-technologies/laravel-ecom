@@ -273,7 +273,7 @@
         {!! view_render_event('bagisto.shop.checkout.cart.continue_shopping.before') !!}
 
         <a
-            class="secondary-button max-h-14 rounded-2xl max-md:rounded-lg max-md:px-6 max-md:py-3 max-md:text-sm max-sm:py-2"
+            class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 w-full border border-slate-200 text-slate-600 bg-transparent py-3 font-semibold hover:bg-brand-green hover:text-black hover:border-brand-green"
             href="{{ route('shop.home.index') }}">
             @lang('shop::app.checkout.cart.index.continue-shopping')
         </a>
