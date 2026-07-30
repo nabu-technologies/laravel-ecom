@@ -123,7 +123,16 @@
             </p>
 
             <!-- subcategory  -->
-            <div class="flex items-center space-x-2 mb-2"><span class="text-sm font-medium text-neutral-700 whitespace-nowrap truncate" data-state="closed" v-html="product.description"></span><span class="text-xs text-neutral-400">•</span><span class="text-xs text-neutral-500 capitalize whitespace-nowrap truncate" data-state="closed">@{{product.attribute_family.name}}</span></div>
+            <div class="flex items-center space-x-1 mb-2 w-full min-w-0 overflow-hidden">
+                <span
+                    class="min-w-0  text-sm font-medium text-neutral-700 whitespace-nowrap truncate">
+                    @{{ truncateWords(product.short_description, 2) }}
+                </span>
+                <span class="text-xs text-neutral-400 shrink-0">•</span>
+                <span class="text-xs text-neutral-500 capitalize whitespace-nowrap truncate shrink-0">
+                    @{{ product.attribute_family.name }}
+                </span>
+            </div>
 
             {!! view_render_event('bagisto.shop.components.products.card.name.after') !!}
 
@@ -363,6 +372,20 @@
         },
 
         methods: {
+            truncateWords(html, wordLimit) {
+                if (!html) return '';
+
+                // Strip HTML tags to get plain text
+                const plainText = html.replace(/<[^>]*>/g, '').trim();
+
+                const words = plainText.split(/\s+/);
+
+                if (words.length <= wordLimit) {
+                    return plainText;
+                }
+
+                return words.slice(0, wordLimit).join(' ') + '...';
+            },
             addToWishlist() {
                 if (this.isCustomer) {
                     this.$axios.post(`{{ route('shop.api.customers.account.wishlist.store') }}`, {

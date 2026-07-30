@@ -38,6 +38,7 @@ class ProductResource extends JsonResource
             'name' => $this->name,
             'attribute_family' => $this->attribute_family,
             'description' => $this->description,
+            'short_description' => $this->short_description,
             'url_key' => $this->url_key,
             'base_image' => product_image()->getProductBaseImage($this),
             'images' => product_image()->getGalleryImages($this),
