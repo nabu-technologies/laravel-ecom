@@ -15,7 +15,7 @@
     <div
         class="shadow-md hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out rounded-xl overflow-hidden"
         v-if="mode != 'list'">
-        <div class="relative max-h-[300px] max-w-[291px] overflow-hidden max-md:max-h-60 max-md:max-w-full max-md:rounded-lg max-sm:max-h-[200px] max-sm:max-w-full">
+        <div class="relative max-h-[210px] max-w-[291px] overflow-hidden max-md:max-h-44 max-md:max-w-full max-md:rounded-lg max-sm:max-h-[150px] max-sm:max-w-full">
             {!! view_render_event('bagisto.shop.components.products.card.image.before') !!}
 
             <!-- Product Image -->
@@ -23,7 +23,7 @@
                 :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)"
                 :aria-label="product.name + ' '">
                 <x-shop::media.images.lazy
-                    class="after:content-[' '] relative bg-zinc-100 transition-all duration-300 after:block after:pb-[calc(100%+9px)] group-hover:scale-105"
+                    class="after:content-[' '] relative bg-zinc-100 transition-all duration-300 after:block after:pb-[calc(70%+9px)] group-hover:scale-105"
                     ::src="product.base_image.medium_image_url"
                     ::srcset="`
                             ${product.base_image.small_image_url} 150w,
@@ -33,7 +33,7 @@
                     ::key="product.id"
                     ::index="product.id"
                     width="291"
-                    height="300"
+                    height="210"
                     ::alt="product.name" />
             </a>
 

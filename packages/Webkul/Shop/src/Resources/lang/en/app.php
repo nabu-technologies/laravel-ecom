@@ -1078,7 +1078,7 @@ return [
                 'bagisto' => 'Nabu',
                 'cart' => 'Cart',
                 'continue-shopping' => 'Continue Shopping',
-                'empty-product' => 'You don’t have a product in your cart.',
+                'empty-product' => 'Looks like you haven\'t added any gift cards to your bag yet.',
                 'excl-tax' => 'Excl. Tax:',
                 'home' => 'Home',
                 'items-selected' => ':count Items Selected',
