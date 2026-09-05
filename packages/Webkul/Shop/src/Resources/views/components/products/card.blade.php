@@ -9,8 +9,6 @@
     type="text/x-template"
     id="v-product-card-template">
     <!-- Grid Card -->
-    <!-- <div
-        class="1180:transition-all group w-full rounded-md 1180:relative 1180:grid 1180:content-start 1180:overflow-hidden 1180:duration-300 1180:hover:shadow-[0_5px_10px_rgba(0,0,0,0.1)]" -->
 
     <div
         class="shadow-md hover:shadow-2xl hover:scale-[1.01] transition-all duration-300 ease-in-out rounded-xl overflow-hidden"
@@ -111,7 +109,7 @@
         </div>
 
         <!-- Product Information Section -->
-        <div class="-mt-9 grid max-w-[291px] translate-y-9 content-start gap-2.5 bg-white p-2.5 transition-transform duration-300 ease-out group-hover:-translate-y-0 group-hover:rounded-t-lg max-md:relative max-md:mt-0 max-md:translate-y-0 max-md:gap-0 max-md:px-0 max-md:py-1.5 max-sm:min-w-[170px] max-sm:max-w-[192px]">
+        <div class="grid max-w-[291px] content-start gap-2.5 bg-white p-3.5 transition-transform duration-300 ease-out group-hover:-translate-y-0 group-hover:rounded-t-lg max-md:relative max-md:mt-0 max-md:translate-y-0 max-md:gap-0 max-md:px-0 max-md:py-1.5 max-sm:min-w-[170px] max-sm:max-w-[192px]">
 
             {!! view_render_event('bagisto.shop.components.products.card.name.before') !!}
 
@@ -155,58 +153,6 @@
                 :href="'{{ route('shop.product_or_category.index', ':slug') }}'.replace(':slug', product.url_key)"
                 :aria-label="product.name + ' '"> View Product
             </a>
-
-
-            <!-- Product Actions Section -->
-            <div class="action-items flex items-center justify-between opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100 max-md:hidden">
-                @if (core()->getConfigData('sales.checkout.shopping_cart.cart_page'))
-                {!! view_render_event('bagisto.shop.components.products.card.add_to_cart.before') !!}
-
-                <!-- <button
-                    class="primary-button w-full max-w-full p-2.5 text-sm font-medium max-sm:rounded-xl max-sm:p-2"
-                    :disabled="! product.is_saleable || isAddingToCart"
-                    @click="addToCart()">
-                    @lang('shop::app.components.products.card.add-to-cart')
-                </button> -->
-                <button
-                    class="primary-button w-full max-w-full p-2.5 text-sm font-medium max-sm:rounded-xl max-sm:p-2"
-                    :disabled="! product.is_saleable || isAddingToCart"
-                    @click="addToCart()">
-                    @{{ (product.type === 'configurable' || product.type === 'downloadable') ? 'View Product' : '@lang('shop::app.components.products.card.add-to-cart')' }}
-                </button>
-
-                {!! view_render_event('bagisto.shop.components.products.card.add_to_cart.after') !!}
-                @endif
-
-                {!! view_render_event('bagisto.shop.components.products.card.wishlist_option.before') !!}
-
-                @if (core()->getConfigData('customer.settings.wishlist.wishlist_option'))
-                <span
-                    class="cursor-pointer p-2.5 text-2xl max-sm:hidden"
-                    role="button"
-                    aria-label="@lang('shop::app.components.products.card.add-to-wishlist')"
-                    tabindex="0"
-                    :class="product.is_wishlist ? 'icon-heart-fill text-red-600' : 'icon-heart'"
-                    @click="addToWishlist()">
-                </span>
-                @endif
-
-                {!! view_render_event('bagisto.shop.components.products.card.wishlist_option.after') !!}
-
-                {!! view_render_event('bagisto.shop.components.products.card.compare_option.before') !!}
-
-                @if (core()->getConfigData('catalog.products.settings.compare_option'))
-                <span
-                    class="icon-compare cursor-pointer p-2.5 text-2xl max-sm:hidden"
-                    role="button"
-                    aria-label="@lang('shop::app.components.products.card.add-to-compare')"
-                    tabindex="0"
-                    @click="addToCompare(product.id)">
-                </span>
-                @endif
-
-                {!! view_render_event('bagisto.shop.components.products.card.compare_option.after') !!}
-            </div>
         </div>
     </div>
 
