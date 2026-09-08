@@ -5,6 +5,7 @@ namespace Webkul\Shop\Http\Resources;
 use Illuminate\Http\Request;
 use Illuminate\Http\Resources\Json\JsonResource;
 use Illuminate\Support\Facades\Log;
+use Webkul\Attribute\Models\AttributeOptionTranslation;
 use Webkul\Product\Helpers\Review;
 
 class ProductResource extends JsonResource
@@ -36,7 +37,7 @@ class ProductResource extends JsonResource
             'id' => $this->id,
             'sku' => $this->sku,
             'name' => $this->name,
-            'attribute_family' => $this->attribute_family,
+            'product_category' => $this->getProductCategoryName($this->product_category),
             'description' => $this->description,
             'short_description' => $this->short_description,
             'url_key' => $this->url_key,
@@ -60,5 +61,14 @@ class ProductResource extends JsonResource
                 'total' => $this->reviewHelper->getTotalReviews($this),
             ],
         ];
+    }
+
+    private function getProductCategoryName($productCategoryId)
+    {
+        $attributeOption = AttributeOptionTranslation::where("locale", app()->getLocale())
+            ->where("attribute_option_id", $productCategoryId)
+            ->first();
+
+        return $attributeOption ? $attributeOption->label : null;
     }
 }

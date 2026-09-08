@@ -126,10 +126,12 @@
                     class="min-w-0  text-sm font-medium text-neutral-700 whitespace-nowrap truncate">
                     @{{ truncateWords(product.short_description, 2) }}
                 </span>
-                <span class="text-xs text-neutral-400 shrink-0">•</span>
-                <span class="text-xs text-neutral-500 capitalize whitespace-nowrap truncate shrink-0">
-                    @{{ product.attribute_family.name }}
-                </span>
+                <template v-if="product.product_category">
+                    <span class="text-xs text-neutral-400 shrink-0">•</span>
+                    <span class="text-xs text-neutral-500 capitalize whitespace-nowrap truncate shrink-0">
+                        @{{ product.product_category }}
+                    </span>
+                </template>
             </div>
 
             {!! view_render_event('bagisto.shop.components.products.card.name.after') !!}
