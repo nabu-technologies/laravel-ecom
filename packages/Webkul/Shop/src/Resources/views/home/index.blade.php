@@ -427,17 +427,17 @@
                         {
                             category: "Financial Verification",
                             icon: CarFront,
-                            description: "Validate driving license details quickly and accurately."
+                            description: "Verify PAN, bank account, and income details accurately."
                         },
                         {
                             category: "Identity Verification",
                             icon: Fingerprint,
-                            description: "Verify vehicle registration and ownership information."
+                            description: "Perform secure Aadhaar-based identity verification instantly."
                         },
                         {
                             category: "Business Verification",
                             icon: BookUser,
-                            description: "Perform secure Aadhaar-based identity verification."
+                            description: "Verify GST, company registration, and ownership details."
                         },
                         // {
                         //     category: "Banking Verification",
