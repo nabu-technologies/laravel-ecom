@@ -221,7 +221,7 @@
                         <div class="max-w-4xl mx-auto">
                         <h2 class="text-4xl md:text-5xl font-bold text-white tracking-tight">Ready to Verify Instantly?</h2>
                         <p class="mt-6 text-lg md:text-xl text-neutral-300">
-                            Join thousands of retailers and businesses completing KYC faster and easier.
+                            Join thousands of retailers and businesses completing KYC faster and more easily.
                         </p>
                       <div
                             class="flex  xs:flex-row gap-4 justify-center items-center relative z-0 mx-auto w-fit transition-all duration-500 delay-200"
