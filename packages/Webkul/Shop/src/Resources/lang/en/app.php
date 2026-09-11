@@ -909,7 +909,8 @@ return [
             ],
 
             'contact-us' => [
-                'about' => 'Jot us a note, and we\'ll get back to you as quickly as possible',
+                // 'about' => 'Jot us a note, and we\'ll get back to you as quickly as possible',
+                'about' => 'Send us a message, and we’ll get back to you as quickly as possible.',
                 'desc' => 'What\'s on your mind?',
                 'describe-here' => 'Describe Here',
                 'email' => 'Email',
@@ -1238,7 +1239,8 @@ return [
 
     'home' => [
         'contact' => [
-            'about' => 'Jot us a note, and we’ll get back to you as quickly as possible',
+            // 'about' => 'Jot us a note, and we’ll get back to you as quickly as possible',
+            'about' => 'Send us a message, and we’ll get back to you as quickly as possible.',
             'desc' => ' What’s on your mind?',
             'describe-here' => 'Describe Here',
             'email' => 'Email',
@@ -1246,7 +1248,7 @@ return [
             'name' => 'Name',
             'phone-number' => 'Phone Number',
             'submit' => 'Submit',
-            'title' => 'Contact',
+            'title' => 'Contact Us',
         ],
 
         'index' => [
