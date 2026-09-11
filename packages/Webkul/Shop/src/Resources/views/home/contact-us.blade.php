@@ -32,7 +32,7 @@
                             type="text"
                             class="px-6 py-5 max-md:py-3 max-sm:py-3.5"
                             name="name"
-                            rules="required"
+                            rules="required|alpha_spaces"
                             :value="old('name')"
                             :label="trans('shop::app.home.contact.name')"
                             :placeholder="trans('shop::app.home.contact.name')"
