@@ -499,7 +499,7 @@
                     features: [{
                             icon: Clock,
                             title: "Verify in Seconds",
-                            description: "Complete KYC instantly with real-time government API response. No more waiting.",
+                            description: "Complete KYC instantly with real-time government API responses. No more waiting.",
                             delay: 0,
                         },
                         {
