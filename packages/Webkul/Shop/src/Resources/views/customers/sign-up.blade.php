@@ -66,7 +66,7 @@
                             type="text"
                             class="px-6 py-4 max-md:py-3 max-sm:py-2"
                             name="first_name"
-                            rules="required"
+                            rules="required|alpha|max:255"
                             :value="old('first_name')"
                             :label="trans('shop::app.customers.signup-form.first-name')"
                             :placeholder="trans('shop::app.customers.signup-form.first-name')"
@@ -89,7 +89,7 @@
                             type="text"
                             class="px-6 py-4 max-md:py-3 max-sm:py-2"
                             name="last_name"
-                            rules="required"
+                            rules="required|alpha|max:255"
                             :value="old('last_name')"
                             :label="trans('shop::app.customers.signup-form.last-name')"
                             :placeholder="trans('shop::app.customers.signup-form.last-name')"
@@ -130,7 +130,7 @@
                         <x-shop::form.control-group.label class="required">
                             @lang('shop::app.customers.signup-form.password')
                         </x-shop::form.control-group.label>
-
+                            
                         <x-shop::form.control-group.control
                             type="password"
                             class="px-6 py-4 max-md:py-3 max-sm:py-2"
@@ -182,7 +182,7 @@
                     @endif
 
                     <!-- Subscribed Button -->
-                    @if (core()->getConfigData('customer.settings.create_new_account_options.news_letter'))
+                    <!-- @if (core()->getConfigData('customer.settings.create_new_account_options.news_letter'))
                         <div class="mb-5 flex select-none items-center gap-1.5">
                             <input
                                 type="checkbox"
@@ -203,7 +203,7 @@
                                 @lang('shop::app.customers.signup-form.subscribe-to-newsletter')
                             </label>
                         </div>
-                    @endif
+                    @endif -->
 
                     {!! view_render_event('bagisto.shop.customers.signup_form.newsletter_subscription.after') !!}
 
