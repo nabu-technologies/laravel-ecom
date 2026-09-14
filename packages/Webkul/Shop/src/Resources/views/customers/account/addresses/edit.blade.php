@@ -59,7 +59,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.address.edit_form_controls.before', ['address' => $address]) !!}
 
                 <!-- Company Name -->
-                <x-shop::form.control-group>
+                <!-- <x-shop::form.control-group>
                     <x-shop::form.control-group.label>
                         @lang('shop::app.customers.account.addresses.edit.company-name')
                     </x-shop::form.control-group.label>
@@ -73,7 +73,7 @@
                     />
 
                     <x-shop::form.control-group.error control-name="company_name" />
-                </x-shop::form.control-group>
+                </x-shop::form.control-group> -->
 
                 {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.company_name.after', ['address' => $address]) !!}
 
@@ -86,7 +86,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="first_name"
-                        rules="required"
+                        rules="required|regex:^[a-zA-Z\s]+$|max:255"
                         :value="old('first_name') ?? $address->first_name"
                         :label="trans('shop::app.customers.account.addresses.edit.first-name')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.first-name')"
@@ -106,7 +106,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="last_name"
-                        rules="required"
+                        rules="required|regex:^[a-zA-Z\s]+$|max:255"
                         :value="old('last_name') ?? $address->last_name"
                         :label="trans('shop::app.customers.account.addresses.edit.last-name')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.last-name')"
@@ -138,7 +138,7 @@
                 {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.email.after', ['address' => $address]) !!}
 
                 <!-- Vat ID -->
-                <x-shop::form.control-group>
+                <!-- <x-shop::form.control-group>
                     <x-shop::form.control-group.label>
                         @lang('shop::app.customers.account.addresses.edit.vat-id')
                     </x-shop::form.control-group.label>
@@ -152,7 +152,7 @@
                     />
 
                     <x-shop::form.control-group.error control-name="vat_id" />
-                </x-shop::form.control-group>
+                </x-shop::form.control-group> -->
 
                 {!! view_render_event('bagisto.shop.customers.account.addresses.edit_form_controls.vat_id.after', ['address' => $address]) !!}
 
@@ -170,7 +170,7 @@
                         type="text"
                         name="address[]"
                         :value="collect(old('address'))->first() ?? $addresses[0]"
-                        rules="required|address"
+                        rules="required|regex:^(?!.*\s{3,})(?!.*#)(?!.*\/\*)(?!.*\*\/)[A-Za-z0-9.,'\-\/&() ]{3,64}$"
                         :label="trans('shop::app.customers.account.addresses.edit.street-address')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.street-address')"
                     />
@@ -210,7 +210,7 @@
                     <x-shop::form.control-group.control
                         type="select"
                         name="country"
-                        rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                        rules="{{ core()->isStateRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                         v-model="addressData.country"
                         :aria-label="trans('shop::app.customers.account.addresses.edit.country')"
                         :label="trans('shop::app.customers.account.addresses.edit.country')"
@@ -240,7 +240,7 @@
                             type="select"
                             name="state"
                             id="state"
-                            rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                            rules="{{ core()->isStateRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                             v-model="addressData.state"
                             :label="trans('shop::app.customers.account.addresses.edit.state')"
                             :placeholder="trans('shop::app.customers.account.addresses.edit.state')"
@@ -258,7 +258,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="state"
-                            rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                            rules="{{ core()->isStateRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                             :value="old('state') ?? $address->state"
                             :label="trans('shop::app.customers.account.addresses.edit.state')"
                             :placeholder="trans('shop::app.customers.account.addresses.edit.state')"
@@ -297,7 +297,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="postcode"
-                        rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode"
+                        rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|regex:^(?!.*\b(OR|AND)\b)[0-9]{6}$"
                         :value="old('postal-code') ?? $address->postcode"
                         :label="trans('shop::app.customers.account.addresses.edit.post-code')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.post-code')"
@@ -316,7 +316,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="phone"
-                        rules="required|phone"
+                        rules="required|regex:^(\+91)?[6-9][0-9]{9}$"
                         :value="old('phone') ?? $address->phone"
                         :label="trans('shop::app.customers.account.addresses.edit.phone')"
                         :placeholder="trans('shop::app.customers.account.addresses.edit.phone')"

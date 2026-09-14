@@ -47,7 +47,7 @@
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.before') !!}
 
                     <!--Company Name -->
-                    <x-shop::form.control-group>
+                    <!-- <x-shop::form.control-group>
                         <x-shop::form.control-group.label>
                             @lang('shop::app.customers.account.addresses.create.company-name')
                         </x-shop::form.control-group.label>
@@ -61,7 +61,7 @@
                         />
             
                         <x-shop::form.control-group.error control-name="company_name" />
-                    </x-shop::form.control-group>
+                    </x-shop::form.control-group> -->
 
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.company_name.after') !!}
 
@@ -74,7 +74,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="first_name"
-                            rules="required"
+                            rules="required|regex:^[a-zA-Z\s]+$|max:255"
                             :value="old('first_name')"
                             :label="trans('shop::app.customers.account.addresses.create.first-name')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.first-name')"
@@ -94,7 +94,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="last_name"
-                            rules="required"
+                            rules="required|regex:^[a-zA-Z\s]+$|max:255"
                             :value="old('last_name')"
                             :label="trans('shop::app.customers.account.addresses.create.last-name')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.last-name')"
@@ -126,7 +126,7 @@
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.email.after') !!}
 
                     <!-- Vat Id -->
-                    <x-shop::form.control-group>
+                    <!-- <x-shop::form.control-group>
                         <x-shop::form.control-group.label>
                             @lang('shop::app.customers.account.addresses.create.vat-id')
                         </x-shop::form.control-group.label>
@@ -140,7 +140,7 @@
                         />
 
                         <x-shop::form.control-group.error control-name="vat_id" />
-                    </x-shop::form.control-group>
+                    </x-shop::form.control-group> -->
 
                     {!! view_render_event('bagisto.shop.customers.account.addresses.create_form_controls.vat_id.after') !!}
 
@@ -153,7 +153,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="address[]"
-                            rules="required|address"
+                            rules="required|regex:^(?!.*\s{3,})(?!.*#)(?!.*\/\*)(?!.*\*\/)[A-Za-z0-9.,'\-\/&() ]{3,64}$"
                             :value="collect(old('address'))->first()"
                             :label="trans('shop::app.customers.account.addresses.create.street-address')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.street-address')"
@@ -196,7 +196,7 @@
                         <x-shop::form.control-group.control
                             type="select"
                             name="country"
-                            rules="{{ core()->isCountryRequired() ? 'required' : '' }}"
+                            rules="{{ core()->isCountryRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                             v-model="country"
                             :aria-label="trans('shop::app.customers.account.addresses.create.country')"
                             :label="trans('shop::app.customers.account.addresses.create.country')"
@@ -224,7 +224,7 @@
                                 type="select"
                                 id="state"
                                 name="state"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                                rules="{{ core()->isStateRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                                 v-model="state"
                                 :label="trans('shop::app.customers.account.addresses.create.state')"
                                 :placeholder="trans('shop::app.customers.account.addresses.create.state')"
@@ -243,7 +243,7 @@
                                 type="text"
                                 name="state"
                                 :value="old('state')"
-                                rules="{{ core()->isStateRequired() ? 'required' : '' }}"
+                                rules="{{ core()->isStateRequired() ? 'required' : '' }}|regex:^[a-zA-Z\s]+$|max:255"
                                 :label="trans('shop::app.customers.account.addresses.create.state')"
                                 :placeholder="trans('shop::app.customers.account.addresses.create.state')"
                             />
@@ -263,7 +263,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="city"
-                            rules="required"
+                            rules="required|regex:^[a-zA-Z\s]+$|max:255"
                             :value="old('city')"
                             :label="trans('shop::app.customers.account.addresses.create.city')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.city')"
@@ -283,7 +283,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="postcode"
-                            rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode"
+                            rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|regex:^(?!.*\b(OR|AND)\b)[0-9]{6}$"
                             :value="old('postcode')"
                             :label="trans('shop::app.customers.account.addresses.create.post-code')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.post-code')"
@@ -303,7 +303,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="phone"
-                            rules="required|phone"
+                            rules="required|regex:^(\+91)?[6-9][0-9]{9}$"
                             :value="old('phone')"
                             :label="trans('shop::app.customers.account.addresses.create.phone')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.phone')"
