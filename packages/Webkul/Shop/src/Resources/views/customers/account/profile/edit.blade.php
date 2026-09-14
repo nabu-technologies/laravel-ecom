@@ -65,7 +65,7 @@
                 <x-shop::form.control-group.control
                     type="text"
                     name="first_name"
-                    rules="required"
+                    rules="required|regex:^[a-zA-Z\s]+$|max:255"
                     :value="old('first_name') ?? $customer->first_name"
                     :label="trans('shop::app.customers.account.profile.edit.first-name')"
                     :placeholder="trans('shop::app.customers.account.profile.edit.first-name')"
@@ -85,7 +85,7 @@
                 <x-shop::form.control-group.control
                     type="text"
                     name="last_name"
-                    rules="required"
+                    rules="required|regex:^[a-zA-Z\s]+$|max:255"
                     :value="old('last_name') ?? $customer->last_name"
                     :label="trans('shop::app.customers.account.profile.edit.last-name')"
                     :placeholder="trans('shop::app.customers.account.profile.edit.last-name')"
@@ -125,7 +125,7 @@
                 <x-shop::form.control-group.control
                     type="text"
                     name="phone"
-                    rules="required|phone"
+                    rules="required|regex:^(\+91)?[6-9][0-9]{9}$"
                     :value="old('phone') ?? $customer->phone"
                     :label="trans('shop::app.customers.account.profile.edit.phone')"
                     :placeholder="trans('shop::app.customers.account.profile.edit.phone')"
@@ -246,7 +246,7 @@
 
             {!! view_render_event('bagisto.shop.customers.account.profile.edit_form_controls.new_password_confirmation.after') !!}
 
-            <div class="mb-4 flex select-none items-center gap-1.5">
+            <!-- <div class="mb-4 flex select-none items-center gap-1.5">
                 <input
                     type="checkbox"
                     name="subscribed_to_news_letter"
@@ -266,7 +266,7 @@
                 >
                     @lang('shop::app.customers.account.profile.edit.subscribe-to-newsletter')
                 </label>
-            </div>
+            </div> -->
 
             <button
                 type="submit"
