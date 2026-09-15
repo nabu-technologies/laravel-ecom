@@ -4,7 +4,7 @@ return [
     'customers' => [
         'forgot-password' => [
             'already-sent' => 'Already Password Reset Mail Sent.',
-            'back' => 'Back to sign In ?',
+            'back' => 'Back to sign In?',
             // 'bagisto' => 'Bagisto',
             'bagisto' => 'Nabu',
             'email' => 'Email',
