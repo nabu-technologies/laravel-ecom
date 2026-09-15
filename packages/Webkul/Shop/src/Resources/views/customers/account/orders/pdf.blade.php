@@ -129,8 +129,8 @@
         body {
             font-size: 10px;
             color: #091341;
-            /* font-family: "{{ $fontFamily['regular'] }}"; */
-            font-family: "{{ $fontFamily['sans-serif'] }}";
+            font-family: "{{ $fontFamily['regular'] }}";
+            /* font-family: "{{ $fontFamily['sans-serif'] }}"; */
         }
 
         b,
