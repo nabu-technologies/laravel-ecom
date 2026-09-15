@@ -18,7 +18,7 @@
         @lang('shop::app.customers.signup-form.page-title')
         </x-slot>
 
-        <div class="container mt-20 max-1180:px-5 max-md:mt-12">
+        <div class="container pt-10 max-1180:px-5 max-md:mt-12">
             {!! view_render_event('bagisto.shop.customers.sign-up.logo.before') !!}
 
             <!-- Company Logo -->
