@@ -165,7 +165,7 @@
 
         table thead th {
             background-color: rgba(201, 247, 60, 0.2);
-            color: rgb(17, 212, 89);
+            /* color: rgb(17, 212, 89); */
             padding: 6px 18px;
             text-align: left;
         }

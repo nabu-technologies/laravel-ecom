@@ -37,7 +37,7 @@
         </p>
 
         <p style="margin:0 0 18px;">
-            <a href="https://get-verifications.nabu.co.in/customer/account/downloadable-products"
+            <a href="https://verifications.nabu.co.in/customer/account/downloadable-products"
                 style="color:#2563EB; text-decoration:none;">
                 Download Your Purchased Document
             </a>
@@ -162,14 +162,15 @@
                 <td style="text-align: left;padding: 15px">
                     {{ $item->name }}
 
-                    @if (isset($item->additional['attributes']))
+                    <!-- @if (isset($item->additional['attributes']))
                     <div>
                         @foreach ($item->additional['attributes'] as $attribute)
                         @if (
                         ! isset($attribute['attribute_type'])
                         || $attribute['attribute_type'] !== 'file'
                         )
-                        <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
+                        <b>{{ $attribute['attribute_name'] }} : </b>
+                        <br>
                         @else
                         {{ $attribute['attribute_name'] }} :
 
@@ -184,7 +185,7 @@
                         @endif
                         @endforeach
                     </div>
-                    @endif
+                    @endif -->
                 </td>
 
                 <td style="display: flex;flex-direction: column;text-align: left;padding: 15px">
@@ -327,14 +328,27 @@
     </div>
     @endif
 
-    <div style="display: grid;gap: 100px;grid-template-columns: repeat(2, minmax(0, 1fr));font-weight: bold">
-        <span>
+    <!-- <div style="display: grid;gap: 100px;grid-template-columns: repeat(2, minmax(0, 1fr));font-weight: bold"> -->
+    <!-- <div style="display: table; width: 100%; font-weight: bold;">
+        <span style="display: table-cell; text-align: left;">
             @lang('shop::app.emails.orders.grand-total')
         </span>
 
-        <span style="text-align: right;">
+       
+        <span style="display: table-cell; text-align: right;">
             {{ core()->formatPrice($invoice->grand_total, $invoice->order_currency_code) }}
         </span>
-    </div>
+    </div> -->
+    <table style="width: 100%; font-weight: bold;">
+        <tr>
+            <td style="text-align: left;">
+                @lang('shop::app.emails.orders.grand-total')
+            </td>
+
+            <td style="text-align: right;">
+                {{ core()->formatPrice($invoice->grand_total, $invoice->order_currency_code) }}
+            </td>
+        </tr>
+    </table>
 </div>
 @endcomponent
