@@ -708,8 +708,10 @@ return [
             'default-header' => 'Default Header',
 
             'confirm' => [
-                'agree-btn' => 'Agree',
-                'disagree-btn' => 'Disagree',
+                // 'agree-btn' => 'Agree',
+                'agree-btn' => 'Delete',
+                // 'disagree-btn' => 'Disagree',
+                'disagree-btn' => 'Cancel',
                 'message' => 'Are you sure you want to perform this action?',
                 'title' => 'Are you sure?',
             ],
