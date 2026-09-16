@@ -556,7 +556,7 @@ return [
         'media' => [
             'index' => [
                 'add-attachments' => 'Add attachments',
-                'add-image' => 'Add Image/Video',
+                'add-image' => 'Add Image',
             ],
         ],
 

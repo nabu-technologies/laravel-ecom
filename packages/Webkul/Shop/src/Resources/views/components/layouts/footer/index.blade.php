@@ -128,7 +128,7 @@
                 @lang('shop::app.components.layouts.footer.footer-text', ['current_year'=> date('Y') ])
             @endif
         </p> -->
-        © Copyright 2026, Nabu (Registered in India). All rights reserved.
+        © 2026, Nabu (Registered in India). All rights reserved.
            
         {!! view_render_event('bagisto.shop.layout.footer.footer_text.after') !!}
     </div>
