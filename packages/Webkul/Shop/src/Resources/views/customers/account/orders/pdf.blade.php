@@ -86,28 +86,14 @@
         @if (!empty($fontPath['regular']))
             @font-face {
                 src: url({{ $fontPath['regular'] }}) format('truetype');
-
-                font-family: {
-                        {
-                        $fontFamily['regular']
-                    }
-                }
-
-                ;
+                font-family: "{{ $fontFamily['regular'] }}";
             }
 
         @endif
         @if (!empty($fontPath['bold']))
             @font-face {
                 src: url({{ $fontPath['bold'] }}) format('truetype');
-
-                font-family: {
-                        {
-                        $fontFamily['bold']
-                    }
-                }
-
-                ;
+                font-family: "{{ $fontFamily['bold'] }}";
                 font-style: bold;
             }
 
@@ -116,21 +102,13 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-
-            font-family: {
-                    {
-                    $fontFamily['regular']
-                }
-            }
-
-            ;
+            font-family: "{{ $fontFamily['regular'] }}";
         }
 
         body {
             font-size: 10px;
             color: #091341;
             font-family: "{{ $fontFamily['regular'] }}";
-            /* font-family: "{{ $fontFamily['sans-serif'] }}"; */
         }
 
         b,
