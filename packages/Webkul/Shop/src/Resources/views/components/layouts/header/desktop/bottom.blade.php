@@ -131,9 +131,9 @@
                                 @lang('shop::app.components.layouts.header.desktop.bottom.welcome-guest')
                             </p>
 
-                            <p class="text-sm">
+                            <!-- <p class="text-sm">
                                 @lang('shop::app.components.layouts.header.desktop.bottom.dropdown-text')
-                            </p>
+                            </p> -->
                         </div>
 
                         <p class="w-full mt-3 border border-zinc-200"></p>
