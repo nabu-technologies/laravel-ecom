@@ -185,7 +185,7 @@
                                                     :name="`${column.index}[from]`"
                                                     value=""
                                                     class="flex min-h-10 w-full rounded-md border px-3 py-2 text-sm text-gray-600 transition-all hover:border-gray-400 max-sm:py-1.5"
-                                                    :placeholder="column.label"
+                                                    :placeholder="'From'"
                                                     :ref="`${column.index}[from]`"
                                                     @change="addFilter(
                                                         $event,
@@ -201,8 +201,8 @@
                                                     :name="`${column.index}[to]`"
                                                     value=""
                                                     class="flex min-h-10 w-full rounded-md border px-3 py-2 text-sm text-gray-600 transition-all hover:border-gray-400 max-sm:py-1.5"
-                                                    :placeholder="column.label"
-                                                    :ref="`${column.index}[from]`"
+                                                    :placeholder="'To'"
+                                                    :ref="`${column.index}[to]`"
                                                     @change="addFilter(
                                                         $event,
                                                         column,
