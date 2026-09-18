@@ -227,7 +227,7 @@
 
         <a
             class="inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0 h-10 bg-brand-logo-green hover:bg-brand-green text-black px-8 py-3"
-            href="{{ route('shop.home.index') }}">
+            href="{{ url('products') }}">
             @lang('shop::app.checkout.cart.index.continue-shopping')
         </a>
         {!! view_render_event('bagisto.shop.checkout.cart.summary.proceed_to_checkout.after') !!}
