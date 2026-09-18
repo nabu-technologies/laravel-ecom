@@ -39,7 +39,7 @@
                         type="text"
                         ::name="controlName + '.first_name'"
                         ::value="address.first_name"
-                        rules="required"
+                        rules="required|regex:^[a-zA-Z\s]+$|min:3|max:64"
                         :label="trans('shop::app.checkout.onepage.address.first-name')"
                         :placeholder="trans('shop::app.checkout.onepage.address.first-name')"
                     />
@@ -59,7 +59,7 @@
                         type="text"
                         ::name="controlName + '.last_name'"
                         ::value="address.last_name"
-                        rules="required"
+                        rules="required|regex:^[a-zA-Z\s]+$|min:3|max:64"
                         :label="trans('shop::app.checkout.onepage.address.last-name')"
                         :placeholder="trans('shop::app.checkout.onepage.address.last-name')"
                     />
@@ -121,7 +121,7 @@
                     type="text"
                     ::name="controlName + '.address.[0]'"
                     ::value="address.address[0]"
-                    rules="required|address"
+                    rules="required|regex:^(?=.*[a-zA-Z])[a-zA-Z0-9\s]+$|min:3|max:64"
                     :label="trans('shop::app.checkout.onepage.address.street-address')"
                     :placeholder="trans('shop::app.checkout.onepage.address.street-address')"
                 />
@@ -136,7 +136,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             ::name="controlName + '.address.[{{ $i }}]'"
-                            rules="address"
+                            rules="required|regex:^[a-zA-Z\s]+$|min:2|max:64"
                             :label="trans('shop::app.checkout.onepage.address.street-address')"
                             :placeholder="trans('shop::app.checkout.onepage.address.street-address')"
                         />
@@ -242,7 +242,7 @@
                         type="text"
                         ::name="controlName + '.city'"
                         ::value="address.city"
-                        rules="required"
+                        rules="required|regex:^[a-zA-Z\s]+$|min:2|max:64"
                         :label="trans('shop::app.checkout.onepage.address.city')"
                         :placeholder="trans('shop::app.checkout.onepage.address.city')"
                     />
@@ -262,7 +262,7 @@
                         type="text"
                         ::name="controlName + '.postcode'"
                         ::value="address.postcode"
-                        rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode"
+                        rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|postcode|digits:6"
                         :label="trans('shop::app.checkout.onepage.address.postcode')"
                         :placeholder="trans('shop::app.checkout.onepage.address.postcode')"
                     />
@@ -283,7 +283,7 @@
                     type="text"
                     ::name="controlName + '.phone'"
                     ::value="address.phone"
-                    rules="required|phone"
+                    rules="required|regex:^(\+91)?[6-9]\d{9}$"
                     :label="trans('shop::app.checkout.onepage.address.telephone')"
                     :placeholder="trans('shop::app.checkout.onepage.address.telephone')"
                 />
