@@ -62,7 +62,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="first_name"
-                        rules="required|regex:^[a-zA-Z\s]+$|max:255"
+                        rules="required|regex:^[a-zA-Z\s]+$|min:3|max:64"
                         :value="old('first_name') ?? $customer->first_name"
                         :label="trans('shop::app.customers.account.profile.edit.first-name')"
                         :placeholder="trans('shop::app.customers.account.profile.edit.first-name')" />
@@ -81,7 +81,7 @@
                     <x-shop::form.control-group.control
                         type="text"
                         name="last_name"
-                        rules="required|regex:^[a-zA-Z\s]+$|max:255"
+                        rules="required|regex:^[a-zA-Z\s]+$|min:3|max:64"
                         :value="old('last_name') ?? $customer->last_name"
                         :label="trans('shop::app.customers.account.profile.edit.last-name')"
                         :placeholder="trans('shop::app.customers.account.profile.edit.last-name')" />
@@ -275,6 +275,7 @@
                             type="password"
                             class="pr-12"
                             name="new_password"
+                            rules="required|min:6|regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$"
                             value=""
                             :label="trans('shop::app.customers.account.profile.edit.new-password')"
                             :placeholder="trans('shop::app.customers.account.profile.edit.new-password')" />
