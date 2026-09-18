@@ -281,7 +281,7 @@
                     getCart() {
                         this.$axios.get("{{ route('shop.api.checkout.cart.index') }}")
                             .then(response => {
-                                this.cart = response.data.data;
+                                this.setCart(response.data.data);
 
                                 this.isLoading = false;
 
@@ -297,6 +297,7 @@
 
                     setCart(cart) {
                         this.cart = cart;
+                        this.$emitter.emit('update-mini-cart', cart);
                     },
 
                     selectAll() {
@@ -317,7 +318,7 @@
                             })
                             .then(response => {
                                 if (response.data.data?.items !== undefined) {
-                                    this.cart = response.data.data;
+                                    this.setCart(response.data.data);
 
                                     this.$emitter.emit('add-flash', {
                                         type: 'success',
@@ -370,7 +371,7 @@
                                             'cart_item_id': itemId,
                                         })
                                     .then(response => {
-                                        this.cart = response.data.data;
+                                        this.setCart(response.data.data);
 
                                         this.$emitter.emit('add-flash', {
                                             type: 'success',
@@ -395,9 +396,9 @@
                                             'ids': selectedItemsIds,
                                         })
                                     .then(response => {
-                                        this.cart = response.data.data;
+                                        this.setCart(response.data.data);
 
-                                        this.$emitter.emit('update-mini-cart', response.data.data);
+                                        // this.$emitter.emit('update-mini-cart', response.data.data);
 
                                         this.$emitter.emit('add-flash', {
                                             type: 'success',
@@ -421,9 +422,9 @@
                                             'ids': allItemsIds,
                                         })
                                     .then(response => {
-                                        this.cart = response.data.data;
+                                        this.setCart(response.data.data);
 
-                                        this.$emitter.emit('update-mini-cart', response.data.data);
+                                        // this.$emitter.emit('update-mini-cart', response.data.data);
 
                                         this.$emitter.emit('add-flash', {
                                             type: 'success',
@@ -451,9 +452,9 @@
                                             'qty': selectedItemsQty
                                         })
                                     .then(response => {
-                                        this.cart = response.data.data;
+                                        this.setCart(response.data.data);
 
-                                        this.$emitter.emit('update-mini-cart', response.data.data);
+                                        // this.$emitter.emit('update-mini-cart', response.data.data);
 
                                         this.$emitter.emit('add-flash', {
                                             type: 'success',
