@@ -275,7 +275,7 @@
                             type="password"
                             class="pr-12"
                             name="new_password"
-                            rules="required|min:6|regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$"
+                            rules="min:6|regex:^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&]).+$"
                             value=""
                             :label="trans('shop::app.customers.account.profile.edit.new-password')"
                             :placeholder="trans('shop::app.customers.account.profile.edit.new-password')" />
