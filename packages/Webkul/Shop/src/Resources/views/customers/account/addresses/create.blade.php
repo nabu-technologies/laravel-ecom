@@ -283,7 +283,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="postcode"
-                            rules="{{ core()->isPostCodeRequired() ? 'required' : '' }}|regex:^(?!.*\b(OR|AND)\b)[0-9]{6}$"
+                            rules="{{ core()->isPostCodeRequired() ? 'required|' : '' }}regex:^[1-9][0-9]{5}$"
                             :value="old('postcode')"
                             :label="trans('shop::app.customers.account.addresses.create.post-code')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.post-code')"
