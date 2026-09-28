@@ -99,8 +99,8 @@
     </button>
 </div>   <!-- ✅ DIV-1 close — ab sirf 2 divs the (DIV-1, DIV-2), dono balanced -->
 
-<div v-if="cart?.items?.length" class="flex items-start gap-10">
-    <div class="flex-1 flex flex-wrap gap-20 pb-8 max-1060:flex-col max-md:mt-0 max-md:gap-[30px] max-md:pb-0">
+<div v-if="cart?.items?.length" class="flex flex-col items-stretch gap-6 lg:flex-row lg:items-start lg:gap-10">
+    <div class="w-full min-w-0 flex-1 flex flex-wrap gap-20 pb-8 max-md:mt-0 max-md:gap-[30px] max-md:pb-0">
         <div class="flex flex-1 flex-col gap-6 max-md:gap-5">
             {!! view_render_event('bagisto.shop.checkout.cart.cart_mass_actions.before') !!}
             {!! view_render_event('bagisto.shop.checkout.cart.cart_mass_actions.after') !!}

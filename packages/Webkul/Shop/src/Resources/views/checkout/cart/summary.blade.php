@@ -1,4 +1,4 @@
-<div class="w-[418px] max-w-full max-md:w-full p-6 rounded-lg border text-card-foreground shadow-sm bg-white border-gray-200 sticky top-8 ">
+<div class="w-full lg:w-[418px] lg:shrink-0 p-6 max-md:p-4 rounded-lg border text-card-foreground shadow-sm bg-white border-gray-200 lg:sticky lg:top-8">
     {!! view_render_event('bagisto.shop.checkout.cart.summary.title.before') !!}
 
     <p
