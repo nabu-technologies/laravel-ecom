@@ -497,7 +497,7 @@
                                 <td>
                                     {{ $item->name }}
 
-                                    @if (isset($item->additional['attributes']))
+                                    <!-- @if (isset($item->additional['attributes']))
                                         <div>
                                             @foreach ($item->additional['attributes'] as $attribute)
                                                 @if (!isset($attribute['attribute_type']) || $attribute['attribute_type'] !== 'file')
@@ -516,7 +516,7 @@
                                                 @endif
                                             @endforeach
                                         </div>
-                                    @endif
+                                    @endif -->
                                 </td>
 
                                 <td>

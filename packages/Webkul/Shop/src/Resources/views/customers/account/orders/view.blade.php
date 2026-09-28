@@ -161,7 +161,7 @@
                                             <td data-value="@lang('shop::app.customers.account.orders.view.information.product-name')">
                                                 {{ $item->name }}
 
-                                                @if (isset($item->additional['attributes']))
+                                                <!-- @if (isset($item->additional['attributes']))
                                                     <div>
                                                         @foreach ($item->additional['attributes'] as $attribute)
                                                             @if (
@@ -184,7 +184,7 @@
                                                             @endif
                                                         @endforeach
                                                     </div>
-                                                @endif
+                                                @endif -->
                                             </td>
 
                                             <td
@@ -546,13 +546,13 @@
                                         <p class="pb-2 text-sm font-medium">
                                             {{ $item->name }}
 
-                                            @if (isset($item->additional['attributes']))
+                                            <!-- @if (isset($item->additional['attributes']))
                                                 <div>
                                                     @foreach ($item->additional['attributes'] as $attribute)
                                                         <b  class="max-sm:!font-semibold">{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
                                                     @endforeach
                                                 </div>
-                                            @endif
+                                            @endif -->
                                         </p>
 
                                         <div class="grid gap-1.5 text-xs font-medium">
@@ -964,13 +964,13 @@
                                                         {{ $item->name }}
                                                     </p>
 
-                                                    @if (isset($item->additional['attributes']))
+                                                    <!-- @if (isset($item->additional['attributes']))
                                                         <div>
                                                             @foreach ($item->additional['attributes'] as $attribute)
                                                                 <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
                                                             @endforeach
                                                         </div>
-                                                    @endif
+                                                    @endif -->
 
                                                     <div class="grid gap-1.5 text-xs font-medium">
                                                         <!-- SKU -->
@@ -1252,13 +1252,13 @@
                                                         <td data-value="@lang('shop::app.customers.account.orders.view.invoices.product-name')">
                                                             {{ $item->name }}
 
-                                                            @if (isset($item->additional['attributes']))
+                                                            <!-- @if (isset($item->additional['attributes']))
                                                                 <div>
                                                                     @foreach ($item->additional['attributes'] as $attribute)
                                                                         <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
                                                                     @endforeach
                                                                 </div>
-                                                            @endif
+                                                            @endif -->
                                                         </td>
 
                                                         <td
@@ -1503,13 +1503,13 @@
                                                         <td data-value="@lang('shop::app.customers.account.orders.view.shipments.product-name')">
                                                             {{ $item->name }}
 
-                                                            @if (isset($item->additional['attributes']))
+                                                            <!-- @if (isset($item->additional['attributes']))
                                                                 <div>
                                                                     @foreach ($item->additional['attributes'] as $attribute)
                                                                         <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
                                                                     @endforeach
                                                                 </div>
-                                                            @endif
+                                                            @endif -->
                                                         </td>
 
                                                         <td data-value="@lang('shop::app.customers.account.orders.view.shipments.qty')">
@@ -1641,13 +1641,13 @@
                                                     <td data-value="@lang('shop::app.customers.account.orders.view.refunds.product-name')">
                                                         {{ $item->name }}
 
-                                                        @if (isset($item->additional['attributes']))
+                                                        <!-- @if (isset($item->additional['attributes']))
                                                             <div>
                                                                 @foreach ($item->additional['attributes'] as $attribute)
                                                                     <b>{{ $attribute['attribute_name'] }} : </b>{{ $attribute['option_label'] }}<br>
                                                                 @endforeach
                                                             </div>
-                                                        @endif
+                                                        @endif -->
                                                     </td>
 
                                                     <td

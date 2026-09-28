@@ -76,9 +76,11 @@
                                                 @{{ record.created_at }}
                                             </p>
                                         </div>
+                                        
     
                                         <p v-html="record.status"></p>
                                     </div>
+
         
                                     <div class="mt-2.5 text-xs font-normal text-neutral-500">
                                         @lang('shop::app.customers.account.orders.subtotal')
