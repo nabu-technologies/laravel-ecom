@@ -153,7 +153,7 @@
                         <x-shop::form.control-group.control
                             type="text"
                             name="address[]"
-                            rules="required|regex:^(?!.*\s{3,})(?!.*#)(?!.*\/\*)(?!.*\*\/)[A-Za-z0-9.,'\-\/&() ]{3,64}$"
+                            rules="required"
                             :value="collect(old('address'))->first()"
                             :label="trans('shop::app.customers.account.addresses.create.street-address')"
                             :placeholder="trans('shop::app.customers.account.addresses.create.street-address')"
